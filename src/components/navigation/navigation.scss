@@ -1,0 +1,30 @@
+@import "../../scss/partials/params";
+
+.nav {
+  color: $font-header;
+  width: 500px;
+
+  &__list {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+  }
+
+  &__item {
+    border-radius: 3px;
+    padding: 5px 10px;
+
+    &:hover {
+      background: rgba(0, 0, 0, 0.1);
+    }
+    &:active {
+      box-shadow: -2px 4px 8px rgba(0, 0, 0, 0.5);
+    }
+  }
+
+  &__link {
+    text-decoration: none;
+    color: $font-header;
+  }
+}

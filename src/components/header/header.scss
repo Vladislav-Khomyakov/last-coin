@@ -1,0 +1,25 @@
+@import "../../scss/partials/params";
+
+.header {
+  display: flex;
+  background: $bg-header;
+  margin: 0;
+  padding: 0;
+
+  &__title {
+    padding-left: 10px;
+  }
+
+  &__link {
+    text-decoration: none;
+    color: $font-header;
+
+    &:hover {
+      color: $second-color;
+    }
+
+    &:active {
+      color: darken($second-color, 5%);
+    }
+  }
+}

@@ -1,0 +1,40 @@
+.cash-account {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 200px;
+  width: 200px;
+  margin: 25px ;
+  border: 2px solid grey;
+  border-radius: 6px;
+
+  &__item {
+    display: flex;
+    flex-direction: row;
+    margin: 10px;
+  }
+
+  &__title {
+    margin: 0;
+  }
+
+  &__icon {
+    border-radius: 6px;
+    height: 35px;
+    width: 35px;
+    padding: 10px;
+    margin-right: 5px;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &_card {
+      background: radial-gradient(#9599f3, #6f71dc);
+    }
+
+    &_wallet {
+      background: radial-gradient(#6f71dc, #9599f3);
+    }
+  }
+}

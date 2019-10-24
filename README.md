@@ -1,1 +1,3 @@
 LastCoin
+
+(React, Redux, Router)

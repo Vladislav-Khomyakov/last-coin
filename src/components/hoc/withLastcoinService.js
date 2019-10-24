@@ -1,5 +1,5 @@
 import React from 'react';
-import {LastcoinServiceConsumer} from "../lastcoin-service-context/lastcoin-service-context";
+import { LastcoinServiceConsumer } from "../lastcoin-service-context/lastcoin-service-context";
 
 const withLastcoinService = () => (Wrapped) => {
     return (props) => {

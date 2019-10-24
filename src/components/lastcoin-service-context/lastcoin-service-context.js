@@ -8,4 +8,4 @@ const {
 export {
     LastcoinServiceProvider,
     LastcoinServiceConsumer
-}
+};

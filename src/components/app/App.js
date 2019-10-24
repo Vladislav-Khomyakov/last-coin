@@ -4,20 +4,18 @@ import './App.scss';
 import Spinner from "../spinner/spinner";
 import withLastcoinService from '../hoc/withLastcoinService';
 import CashAccount from "../cash-account/cash-account";
+import Header from "../header/header";
 
 const App = () => {
     return (
-        <Switch>
-            <Route path='/' exact component={<Spinner />} />
-            <Route path='/cash-account/' component={<CashAccount />}/>
-        </Switch>
+        <div>
+            <Header />
+            <Switch>
+                <Route path='/' exact component={Spinner} />
+                <Route path='/account/' component={CashAccount} />
+            </Switch>
+        </div>
     );
 };
 
 export default withLastcoinService()(App);
-
-/*
-<Switch>
-    <Route path='/' exect component={<Spinner />} />
-    <Route path='/cash-account/' component={<CashAccount />}/>
-</Switch>*/

@@ -1,7 +1,6 @@
-@import url('https://fonts.googleapis.com/css?family=Titillium+Web:400,700&display=swap');
+//@import url('https://fonts.googleapis.com/css?family=Titillium+Web:400,700&display=swap');
 @import "./scss/partials/mixins";
 @import "./scss/partials/params";
-@import "components/error-indicator/error-indicator";
 
 html, body {
   @include clear;
