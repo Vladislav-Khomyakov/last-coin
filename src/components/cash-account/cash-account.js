@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCreditCard, faWallet } from '@fortawesome/free-solid-svg-icons';
+import { faCreditCard, faWallet, faRubleSign, faEuroSign, faDollarSign } from '@fortawesome/free-solid-svg-icons';
 import "./cash-account.scss"
 import withLastcoinService from '../hoc/withLastcoinService'
 
@@ -16,7 +16,7 @@ class CashAccount extends Component {
     };
 
     render() {
-        const { cardCash, walletCash } = this.props.profile;
+        const { rubCardCash, eurCardCash, usdCardCash, rubWalletCash, eurWalletCash, usdWalletCash } = this.props.profile;
 
         return (
             <div className='cash-account'>
@@ -26,7 +26,26 @@ class CashAccount extends Component {
                     </div>
                     <div>
                         <h3 className='cash-account__title'>Card</h3>
-                        {cardCash}
+                        <ul className='cash-account__list'>
+                            <li>
+                                <span>
+                                    <FontAwesomeIcon icon={faRubleSign} />
+                                    {rubCardCash}
+                                </span>
+                            </li>
+                            <li>
+                                <span>
+                                    <FontAwesomeIcon icon={faEuroSign} />
+                                    {eurCardCash}
+                                </span>
+                            </li>
+                            <li>
+                                <span>
+                                    <FontAwesomeIcon icon={faDollarSign} />
+                                    {usdCardCash}
+                                </span>
+                            </li>
+                        </ul>
                     </div>
                 </div>
                 <div className='cash-account__item'>
@@ -35,7 +54,26 @@ class CashAccount extends Component {
                     </div>
                     <div>
                         <h3 className='cash-account__title'>Wallet</h3>
-                        {walletCash}
+                        <ul className='cash-account__list'>
+                            <li>
+                                <span>
+                                    <FontAwesomeIcon icon={faRubleSign} />
+                                    {rubWalletCash}
+                                </span>
+                            </li>
+                            <li>
+                                <span>
+                                    <FontAwesomeIcon icon={faEuroSign} />
+                                    {eurWalletCash}
+                                </span>
+                            </li>
+                            <li>
+                                <span>
+                                    <FontAwesomeIcon icon={faDollarSign} />
+                                    {usdWalletCash}
+                                </span>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>

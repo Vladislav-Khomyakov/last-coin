@@ -5,6 +5,14 @@ const cashAccountLoaded = (profile) => {
     };
 };
 
+const exchangeRatesLoaded = (exchangeRates) => {
+    return {
+        type: 'FETCH_EXCHANGE_RATES_SUCCESS',
+        payload: exchangeRates
+    };
+};
+
 export {
-    cashAccountLoaded
+    cashAccountLoaded,
+    exchangeRatesLoaded
 };

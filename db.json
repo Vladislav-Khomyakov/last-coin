@@ -4,15 +4,23 @@
       "firstName": "Vladislav",
       "lastName": "Khomyakov",
       "email": "vladislav@mail.ru",
-      "cardCash": 15000,
-      "walletCash": 450
+      "rubCardCash": 15000,
+      "eurCardCash": 12,
+      "usdCardCash": 148,
+      "rubWalletCash": 450,
+      "eurWalletCash": 0,
+      "usdWalletCash": 10
     },
     { "id": 2,
       "firstName": "Eduard",
       "lastName": "Rudenko",
       "email": "eduard@mail.ru",
-      "cardCash": 200000,
-      "walletCash": 10500
+      "rubCardCash": 56800,
+      "eurCardCash": 670,
+      "usdCardCash": 0,
+      "rubWalletCash": 2530,
+      "eurWalletCash": 0,
+      "usdWalletCash": 16
     }
   ]
 }
