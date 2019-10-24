@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCreditCard, faWallet, faRubleSign, faEuroSign, faDollarSign } from '@fortawesome/free-solid-svg-icons';
-import "./cash-account.scss"
-import withLastcoinService from '../hoc/withLastcoinService'
+import "./cash-account.scss";
+import withLastcoinService from '../hoc/withLastcoinService';
 
 class CashAccount extends Component {
 

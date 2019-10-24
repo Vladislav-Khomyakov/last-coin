@@ -1,9 +1,9 @@
 const initialState = {
     profile: [],
     exchangeRates: {
-        rubER: null,
+        dataER: null,
         eurER: null,
-        usrER: null
+        usdER: null
     }
 };
 
@@ -24,11 +24,15 @@ const reducer = (state = initialState, action) => {
 };
 
 const extractExchangeRate = (state, data) => {
-    console.log('State', state);
-    console.log('Data', data);
+    //console.log('State', state);
+    //console.log('Data', data.eurRates);
     return {
         profile: state.profile,
-        exchangeRates: data
+        exchangeRates: {
+            dataER: 'test',
+            eurER: data.eurRates,
+            usdER: data.usdRates
+        }
     };
 };
 

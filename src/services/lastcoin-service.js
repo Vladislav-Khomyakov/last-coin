@@ -7,10 +7,7 @@ export default class LastcoinService {
         return await new Promise((resolve) => {
             fetch(`${this._localApiBase}${url}`)
                 .then((response) => response.json())
-                .then((body) => {
-                    //console.log('1', body);
-                    resolve(body)
-                })
+                .then((body) => resolve(body))
                 .catch((() => console.log("getProfileResources error")));
         });
     };
@@ -22,23 +19,31 @@ export default class LastcoinService {
     };
 
     getExchangeRates = async () => {
-        const res = await Promise((resolve) => {
-            fetch(this._proxyCors + this._globalApiCbr)
-                .then((response) => response.text())
-                .then((data) => console.log(data))
-                .catch((() => console.log("getExchangeRates error")))
-        }
-        console.log(res);
-
+        const xmlString = await fetch(this._proxyCors + this._globalApiCbr)
+            .then((response) => response.text())
+            .then((body) => body)
+            .catch((() => console.log("getExchangeRates error")));
+        const parser = new DOMParser();
+        const xmlDoc = parser.parseFromString(xmlString, "text/xml");
+        const rateRegExp = /"([0-9]*\.[0-9]*)"\/>$/;
+        //console.log("xmlDoc", xmlDoc);
+        //console.log('getExchangeRates - XML', typeof(xmlDoc));
+        const eurRates = xmlDoc.getElementsByTagName('Cube')[16].outerHTML.match(rateRegExp)[1];
+        const usdRates = xmlDoc.getElementsByTagName('Cube')[2].outerHTML.match(rateRegExp)[1];
+        //console.log("Pars res", usdRates);
+        return {
+            eurRates: eurRates,
+            usdRates: usdRates
+        };
     };
 
-    getRequiredExchangeRates = async () => {
-        const res = await this.getExchangeRates();
-        console.log('ER res', res);
-        const parser = new DOMParser();
-        const xmlDoc = parser.parseFromString(res, "text/xml");
-        return console.log("XML", xmlDoc);
-    }
+    // getRequiredExchangeRates = async () => {
+    //     const xmlString = await this.getExchangeRates();
+    //     console.log('ER res', xmlString);
+    //     const parser = new DOMParser();
+    //     const xmlDoc = parser.parseFromString(xmlString, "text/xml");
+    //     console.log("XML", xmlDoc);
+    // };
 
     // _transformPersonCashAccount = (cashAccount) => {
     //     return {

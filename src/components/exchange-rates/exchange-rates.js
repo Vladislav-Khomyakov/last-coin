@@ -1,20 +1,21 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faRubleSign, faEuroSign, faDollarSign, faMoneyBillWaveAlt } from '@fortawesome/free-solid-svg-icons';
-import withLastcoinService from '../hoc/withLastcoinService'
+import { faEuroSign, faDollarSign, faMoneyBillWaveAlt } from '@fortawesome/free-solid-svg-icons';
+import withLastcoinService from '../hoc/withLastcoinService';
 
 class ExchangeRates extends Component {
 
     componentDidMount() {
         const { lastcoinService } = this.props;
-        lastcoinService.getRequiredExchangeRates().then((data) => {
+        lastcoinService.getExchangeRates().then((data) => {
             this.props.exchangeRatesLoaded(data);
+            //console.log(data);
         });
     };
 
     render() {
-        // const { rubCardCash, eurCardCash, usdCardCash, rubWalletCash, eurWalletCash, usdWalletCash } = this.props.profile;
+        const { eurER, usdER } = this.props.exchangeRates;
 
         return (
             <div className='cash-account'>
@@ -27,20 +28,14 @@ class ExchangeRates extends Component {
                         <ul className='cash-account__list'>
                             <li>
                                 <span>
-                                    <FontAwesomeIcon icon={faRubleSign} />
-
-                                </span>
-                            </li>
-                            <li>
-                                <span>
                                     <FontAwesomeIcon icon={faEuroSign} />
-
+                                    {eurER}
                                 </span>
                             </li>
                             <li>
                                 <span>
                                     <FontAwesomeIcon icon={faDollarSign} />
-
+                                    {usdER}
                                 </span>
                             </li>
                         </ul>
@@ -53,7 +48,7 @@ class ExchangeRates extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        newExchangeRates: state.newExchangeRates
+        exchangeRates: state.exchangeRates
     };
 };
 

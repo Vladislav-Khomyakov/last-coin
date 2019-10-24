@@ -4,7 +4,7 @@ import './App.scss';
 import Spinner from "../spinner/spinner";
 import withLastcoinService from '../hoc/withLastcoinService';
 import Header from "../header/header";
-import {AccountPage} from "../pages";
+import { AccountPage, ProfilePage } from "../pages";
 
 const App = () => {
     return (
@@ -13,6 +13,7 @@ const App = () => {
             <Switch>
                 <Route path='/' exact component={Spinner} />
                 <Route path='/account/' component={AccountPage} />
+                <Route path='/profile/' component={ProfilePage}/>
             </Switch>
         </div>
     );
