@@ -1,6 +1,7 @@
 {
   "profile": [
-    { "id": 1,
+    {
+      "id": 1,
       "firstName": "Vladislav",
       "lastName": "Khomyakov",
       "email": "vladislav@mail.ru",
@@ -11,7 +12,8 @@
       "eurWalletCash": 0,
       "usdWalletCash": 10
     },
-    { "id": 2,
+    {
+      "id": 2,
       "firstName": "Eduard",
       "lastName": "Rudenko",
       "email": "eduard@mail.ru",
@@ -21,6 +23,44 @@
       "rubWalletCash": 2530,
       "eurWalletCash": 0,
       "usdWalletCash": 16
+    }
+  ],
+  "categories": [
+    {
+      "id": 1,
+      "name": "House"
+    },
+    {
+      "id": 2,
+      "name": "Food"
+    },
+    {
+      "id": 3,
+      "name": "Transport"
+    }
+  ],
+  "events": [
+    {
+      "id": 1,
+      "userId": 1,
+      "type": "income",
+      "category": 1,
+      "amount": 321,
+      "walletType": "card",
+      "date": "25.10.19",
+      "description": "test event"
+
+    },
+    {
+      "id": 2,
+      "userId": 2,
+      "type": "income",
+      "category": 2,
+      "amount": 321,
+      "walletType": "card",
+      "date": "25.10.19",
+      "description": "test event"
+
     }
   ]
 }

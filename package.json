@@ -18,11 +18,12 @@
     "redux-thunk": "^2.3.0"
   },
   "scripts": {
+    "dev": "concurrently --kill-others \"npm run start\" \"npm run server\"",
     "start": "set PORT=3030 && react-scripts start",
+    "server": "json-server --watch db.json --port 3033",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "server": "json-server --watch db.json --port 3033"
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": "react-app"
