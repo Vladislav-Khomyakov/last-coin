@@ -3,9 +3,7 @@ import OverviewTransactions from "../overview-transactions/overview-transactions
 
 const OverviewPage = () => {
   return (
-    <>
-      <OverviewTransactions />
-    </>
+    <OverviewTransactions/>
   );
 };
 

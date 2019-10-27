@@ -49,18 +49,16 @@
       "walletType": "card",
       "date": "25.10.19",
       "description": "test event"
-
     },
     {
       "id": 2,
-      "userId": 2,
+      "userId": 1,
       "type": "income",
-      "category": 2,
-      "amount": 321,
+      "category": 1,
+      "amount": 1,
       "walletType": "card",
-      "date": "25.10.19",
-      "description": "test event"
-
+      "date": "28.10.2019",
+      "description": "Description"
     }
   ]
 }

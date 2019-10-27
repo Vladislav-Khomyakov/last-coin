@@ -12,10 +12,17 @@ const exchangeRatesLoaded = (exchangeRates) => {
   };
 };
 
-const eventsLoaded = (events) => {
+const overviewEventsLoaded = (overviewEvents) => {
+  return {
+    type: 'FETCH_OVERVIEW_EVENTS_SUCCESS',
+    payload: overviewEvents
+  }
+};
+
+const eventsLoaded = (categories) => {
   return {
     type: 'FETCH_EVENTS_SUCCESS',
-    payload: events
+    payload: categories
   }
 };
 
@@ -26,9 +33,26 @@ const categoriesLoaded = (categories) => {
   }
 };
 
+const transactionAdded = (data) => {
+  return {
+    type: 'TRANSACTION_ADDED',
+    payload: data
+  }
+};
+
+const transactionRemoved = (id) => {
+  return {
+    type: 'TRANSACTION_REMOVED',
+    payload: id
+  }
+};
+
 export {
   cashAccountLoaded,
   exchangeRatesLoaded,
+  overviewEventsLoaded,
   eventsLoaded,
-  categoriesLoaded
+  categoriesLoaded,
+  transactionRemoved,
+  transactionAdded
 };

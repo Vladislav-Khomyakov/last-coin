@@ -9,13 +9,23 @@ export default class LastcoinService {
       fetch(`${this._localApiBase}${url}`)
         .then((response) => response.json())
         .then((body) => resolve(body))
-        .catch((() => console.log("getProfileResources error")));
+        .catch(() => console.log("getProfileResources error"));
     });
   };
 
   getPersonCashAccount = async (id) => {
     const res = await this.getProfileResources(`/profile/${id}`);
     return await res;
+  };
+
+//Get overview transaction-input
+  getOverviewTransactions = async () => {
+    const events = await this.getPersonEvents();
+    const categories = await this.getCategories();
+    return {
+      events: events,
+      categories: categories
+    }
   };
 
   getPersonEvents = async () => {
@@ -25,10 +35,33 @@ export default class LastcoinService {
 
   getCategories = async () => {
     const res = await this.getProfileResources(`/categories`);
-    console.log('Categories', res);
     return await res;
   };
 
+//Del transaction
+  delTransaction = async (id) => {
+    await fetch(`${this._localApiBase}/events/${id}`, {
+      method: 'delete'
+    })
+      .then(res => res.json())
+      .catch(() => console.log("delTransaction error"));
+  };
+
+//Post transaction
+  postTransaction = async (newEvent) => {
+    await fetch(`${this._localApiBase}/events`, {
+      method: 'post',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(newEvent)
+    })
+      .then(res => res.json())
+      .catch(() => console.log("postTransaction error"));
+    console.log("post", newEvent);
+  };
+
+//Get exchange rates
   getExchangeRates = async () => {
     const currencyEUR = await this.getCurrencyEUR();
     const currencyUSD = await this.getCurrencyUSD();
@@ -43,7 +76,7 @@ export default class LastcoinService {
       fetch(this._globalApiApilayerCurrencyUSD)
         .then((response) => response.json())
         .then((body) => resolve(body.quotes.USDRUB))
-        .catch((() => console.log("getProfileResources error")));
+        .catch(() => console.log("getProfileResources error"));
     });
   };
 
@@ -51,7 +84,7 @@ export default class LastcoinService {
     const xml = await fetch(this._proxyCors + this._globalApiCbrEUR)
       .then((response) => response.text())
       .then((body) => new DOMParser().parseFromString(body, "text/xml"))
-      .catch((() => console.log("getExchangeRates error")));
+      .catch(() => console.log("getExchangeRates error"));
     let rate;
     let i = 0;
     while (rate !== 'RUB') {
@@ -61,22 +94,3 @@ export default class LastcoinService {
     return xml.getElementsByTagName('Cube')[i].attributes[1].value;
   };
 };
-
-// getRequiredExchangeRates = async () => {
-//     const xmlString = await this.getExchangeRates();
-//     console.log('ER res', xmlString);
-//     const parser = new DOMParser();
-//     const xmlDoc = parser.parseFromString(xmlString, "text/xml");
-//     console.log("XML", xmlDoc);
-// };
-
-// _transformPersonCashAccount = (cashAccount) => {
-//     return {
-//         id: cashAccount.id,
-//         firstName: cashAccount.firstName,
-//         lastName: cashAccount.lastName,
-//         email: cashAccount.email,
-//         cardCash: cashAccount.cardCash,
-//         walletCash: cashAccount.walletCash
-//     };
-// };

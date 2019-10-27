@@ -4,37 +4,47 @@ import './overview-transactions.scss';
 import withLastcoinService from "../hoc/withLastcoinService";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faTrash} from "@fortawesome/free-solid-svg-icons";
-import {categoriesLoaded, eventsLoaded} from "../../actions";
+import {overviewEventsLoaded, transactionRemoved} from "../../actions";
 
 class OverviewTransactions extends Component {
 
   componentDidMount() {
     const {lastcoinService} = this.props;
-    lastcoinService.getPersonEvents()
-      .then(data => this.props.eventsLoaded(data));
-  }
+    lastcoinService.getOverviewTransactions()
+      .then((data) => this.props.overviewEventsLoaded(data));
+  };
+
+  componentDidUpdate(prevProps) {
+    // if (this.props.events !== prevProps.events) {
+    //   const {lastcoinService} = this.props;
+    //   lastcoinService.getOverviewTransactions()
+    //     .then((data) => this.props.overviewEventsLoaded(data));
+    // }
+  };
 
   render() {
-    const {events} = this.props;
+    const {events, categories, onDelete} = this.props;
+
     const renderRow = (events, idx) => {
-      const {id, type, category, amount, walletType, date, description} = events;
-      // let categoryName;
-      // let i = 1;
-      // while (category !== categories.id) {
-      //   categoryName = categories.name
-      // }
+      const {id: eventsId, type, category, amount, walletType, date, description} = events;
+      const categoryName = () => {
+        const categoryName = categories.find(categories => categories.id === category);
+        return categoryName.name;
+      };
       return (
-        <tr key={id}>
+        <tr key={eventsId}>
           <td>{idx + 1}</td>
           <td>{type}</td>
-          <td>{category}</td>
+          <td>{categoryName()}</td>
           <td>{amount}</td>
           <td>{walletType}</td>
           <td>{date}</td>
           <td>{description}</td>
-          <button>
-            <FontAwesomeIcon icon={faTrash}/>
-          </button>
+          <td>
+            <button onClick={() => onDelete(eventsId)}>
+              <FontAwesomeIcon icon={faTrash}/>
+            </button>
+          </td>
         </tr>
       );
     };
@@ -42,7 +52,7 @@ class OverviewTransactions extends Component {
     return (
       <div>
         <h2>Overview your transactions</h2>
-        <table >
+        <table>
           <thead>
           <tr>
             <th>#</th>
@@ -55,13 +65,13 @@ class OverviewTransactions extends Component {
           </tr>
           </thead>
           <tbody>
-            {events.map(renderRow)}
+          {events.map(renderRow)}
           </tbody>
         </table>
       </div>
     );
   };
-};
+}
 
 const mapStateToProps = (state) => {
   return {
@@ -71,8 +81,8 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = {
-  eventsLoaded: eventsLoaded,
-  categoriesLoaded: categoriesLoaded
+  overviewEventsLoaded: overviewEventsLoaded,
+  onDelete: transactionRemoved
 };
 
 export default withLastcoinService()(connect(mapStateToProps, mapDispatchToProps)(OverviewTransactions));
