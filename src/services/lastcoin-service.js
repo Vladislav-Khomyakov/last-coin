@@ -13,9 +13,23 @@ export default class LastcoinService {
     });
   };
 
+//Profile
   getPersonCashAccount = async (id) => {
     const res = await this.getProfileResources(`/profile/${id}`);
     return await res;
+  };
+
+  patchUpdateProfile = async (id, newProfile) => {
+    await fetch(`${this._localApiBase}/profile/${id}`, {
+      method: 'patch',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(newProfile)
+    })
+      .then(res => res.json())
+      .catch(() => console.log("patchUpdateProfile error"));
+    console.log("patch newProfile", newProfile);
   };
 
 //Get overview transaction-input
@@ -58,7 +72,7 @@ export default class LastcoinService {
     })
       .then(res => res.json())
       .catch(() => console.log("postTransaction error"));
-    console.log("post", newEvent);
+    console.log("post newEvent", newEvent);
   };
 
 //Get exchange rates

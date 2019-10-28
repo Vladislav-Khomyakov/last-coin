@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import withLastcoinService from "../hoc/withLastcoinService";
-import {overviewEventsLoaded, transactionAdded} from "../../actions";
+import {overviewEventsLoaded, cashAccountLoaded, transactionAdded} from "../../actions";
 
 class TransactionInput extends Component {
 
@@ -28,13 +28,25 @@ class TransactionInput extends Component {
     this.setState({selectedDescription: String(changeEvent.target.value)});
   };
 
-
+  pushNewTransaction = () => {
+    const {profile: {rubCardCash}, transactionAdded} = this.props;
+    const {selectedAmount} = this.state;
+    console.log("rub", rubCardCash);
+    if (rubCardCash > selectedAmount) {
+      transactionAdded(this.state)
+    }
+    console.log("На вашем кошельке недостаточно средств");
+  };
 
   componentDidMount() {
     const {lastcoinService} = this.props;
-    lastcoinService.getOverviewTransactions()
+     lastcoinService.getOverviewTransactions()
       .then((data) => {
         this.props.overviewEventsLoaded(data);
+      });
+     lastcoinService.getPersonCashAccount(1)
+      .then((data) => {
+        this.props.cashAccountLoaded(data);
       });
   };
 
@@ -46,7 +58,7 @@ class TransactionInput extends Component {
       const {id: categoryId, name} = categories;
       console.log('row');
       return (
-        <option value={categoryId} key={categoryId}>{name}</option>
+        <option value={categoryId} key={categoryId}>{name} {categoryId}</option>
       );
     };
 
@@ -95,7 +107,7 @@ class TransactionInput extends Component {
             onChange={this.descriptionChange}/>
         </div>
         <div>
-          <button onClick={() => transactionAdded(this.state)}>
+          <button onClick={() => this.pushNewTransaction()}>
             Add transaction
           </button>
         </div>
@@ -106,12 +118,14 @@ class TransactionInput extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    categories: state.categories
+    categories: state.categories,
+    profile: state.profile
   };
 };
 
 const mapDispatchToProps = {
   overviewEventsLoaded: overviewEventsLoaded,
+  cashAccountLoaded: cashAccountLoaded,
   transactionAdded: transactionAdded
 };
 

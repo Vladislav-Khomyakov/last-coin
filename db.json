@@ -59,6 +59,126 @@
       "walletType": "card",
       "date": "28.10.2019",
       "description": "Description"
+    },
+    {
+      "id": 3,
+      "userId": 1,
+      "type": "income",
+      "category": 1,
+      "amount": 100,
+      "walletType": "card",
+      "date": "28.10.2019",
+      "description": "Description"
+    },
+    {
+      "id": 4,
+      "userId": 1,
+      "type": "income",
+      "category": 1,
+      "amount": 1,
+      "walletType": "card",
+      "date": "28.10.2019",
+      "description": "Description"
+    },
+    {
+      "id": 5,
+      "userId": 1,
+      "type": "income",
+      "category": 1,
+      "amount": 10000,
+      "walletType": "card",
+      "date": "28.10.2019",
+      "description": "Description"
+    },
+    {
+      "id": 6,
+      "userId": 1,
+      "type": "income",
+      "category": 1,
+      "amount": 100,
+      "walletType": "card",
+      "date": "28.10.2019",
+      "description": "Description"
+    },
+    {
+      "id": 7,
+      "userId": 1,
+      "type": "income",
+      "category": 1,
+      "amount": 100,
+      "walletType": "card",
+      "date": "28.10.2019",
+      "description": "Description"
+    },
+    {
+      "id": 8,
+      "userId": 1,
+      "type": "income",
+      "category": 2,
+      "amount": 1,
+      "walletType": "card",
+      "date": "28.10.2019",
+      "description": "Description"
+    },
+    {
+      "id": 9,
+      "userId": 1,
+      "type": "income",
+      "category": 1,
+      "amount": 1,
+      "walletType": "card",
+      "date": "28.10.2019",
+      "description": "Description"
+    },
+    {
+      "id": 10,
+      "userId": 1,
+      "type": "income",
+      "category": 1,
+      "amount": 1,
+      "walletType": "card",
+      "date": "28.10.2019",
+      "description": "Description"
+    },
+    {
+      "id": 11,
+      "userId": 1,
+      "type": "income",
+      "category": 1,
+      "amount": 1,
+      "walletType": "card",
+      "date": "28.10.2019",
+      "description": "Description"
+    },
+    {
+      "id": 12,
+      "userId": 1,
+      "type": "income",
+      "category": 1,
+      "amount": 1,
+      "walletType": "card",
+      "date": "28.10.2019",
+      "description": "Description"
+    },
+    {
+      "id": 13,
+      "userId": 1,
+      "type": "income",
+      "category": 1,
+      "amount": 1,
+      "walletType": "card",
+      "date": "28.10.2019",
+      "description": "Description"
+    },
+    {
+      "id": 14,
+      "userId": 1,
+      "type": "income",
+      "category": 1,
+      "amount": 1,
+      "walletType": "card",
+      "date": "28.10.2019",
+      "description": "Description"
     }
   ]
 }

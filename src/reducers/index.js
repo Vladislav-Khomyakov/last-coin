@@ -96,11 +96,20 @@ const addedTransaction = (state, data) => {
     date: "28.10.2019",
     description: data.selectedDescription
   };
-  console.log('new', newEvent);
+  console.log('new profile', newEvent);
+
+  const newProfile = {
+    ...state.profile,
+    rubCardCash: state.profile.rubCardCash - data.selectedAmount
+  };
+  console.log('new profile', newProfile);
+
   lastcoinService.postTransaction(newEvent);
+  lastcoinService.patchUpdateProfile(state.profile.id, newProfile);
 
   return {
     ...state,
+    profile: newProfile,
     events: [
       state.events.slice(0, maxId - 1),
       newEvent

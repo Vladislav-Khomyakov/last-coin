@@ -48,7 +48,7 @@ class CashAccount extends Component {
             </ul>
           </div>
         </div>
-        <div className='cash-account__item'>
+        {/*<div className='cash-account__item'>
           <div className='cash-account__icon cash-account__icon_wallet'>
             <FontAwesomeIcon icon={faWallet} size="2x"/>
           </div>
@@ -75,7 +75,7 @@ class CashAccount extends Component {
               </li>
             </ul>
           </div>
-        </div>
+        </div>*/}
       </div>
     );
   };
