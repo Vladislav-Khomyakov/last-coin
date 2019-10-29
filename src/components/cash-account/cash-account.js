@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faCreditCard, faWallet, faRubleSign, faEuroSign, faDollarSign} from '@fortawesome/free-solid-svg-icons';
+import {faCreditCard, faRubleSign, faEuroSign, faDollarSign} from '@fortawesome/free-solid-svg-icons';
 import "./cash-account.scss";
 import withLastcoinService from '../hoc/withLastcoinService';
 
@@ -16,7 +16,7 @@ class CashAccount extends Component {
   };
 
   render() {
-    const {rubCardCash, eurCardCash, usdCardCash, rubWalletCash, eurWalletCash, usdWalletCash} = this.props.profile;
+    const {rubCardCash, eurCardCash, usdCardCash} = this.props.profile;
 
     return (
       <div className='cash-account'>
@@ -48,34 +48,6 @@ class CashAccount extends Component {
             </ul>
           </div>
         </div>
-        {/*<div className='cash-account__item'>
-          <div className='cash-account__icon cash-account__icon_wallet'>
-            <FontAwesomeIcon icon={faWallet} size="2x"/>
-          </div>
-          <div>
-            <h3 className='cash-account__title'>Wallet</h3>
-            <ul className='cash-account__list'>
-              <li>
-                <span>
-                  <FontAwesomeIcon icon={faRubleSign}/>
-                  {rubWalletCash}
-                </span>
-              </li>
-              <li>
-                <span>
-                  <FontAwesomeIcon icon={faEuroSign}/>
-                  {eurWalletCash}
-                </span>
-              </li>
-              <li>
-                <span>
-                  <FontAwesomeIcon icon={faDollarSign}/>
-                  {usdWalletCash}
-                </span>
-              </li>
-            </ul>
-          </div>
-        </div>*/}
       </div>
     );
   };

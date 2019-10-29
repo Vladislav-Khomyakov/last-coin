@@ -1,18 +1,23 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import withLastcoinService from "../hoc/withLastcoinService";
-import {overviewEventsLoaded, cashAccountLoaded, transactionAdded} from "../../actions";
+import {historyEventsLoaded, cashAccountLoaded, transactionAdded} from "../../actions";
 
 class TransactionInput extends Component {
 
-  state ={
-    selectedCategory: 1,
+  state = {
+    selectedCategory: undefined,
     selectedTransactionType: "income",
     selectedAmount: 1,
     selectedDescription: 'Description'
   };
 
+  categoryChange2 = (changeEvent) => {
+    this.setState({selectedCategory: Number(changeEvent)});
+  };
+
   categoryChange = changeEvent => {
+    console.log(changeEvent.target.value);
     this.setState({selectedCategory: Number(changeEvent.target.value)});
   };
 
@@ -30,33 +35,35 @@ class TransactionInput extends Component {
 
   pushNewTransaction = () => {
     const {profile: {rubCardCash}, transactionAdded} = this.props;
-    const {selectedAmount} = this.state;
-    console.log("rub", rubCardCash);
-    if (rubCardCash > selectedAmount) {
-      transactionAdded(this.state)
+    const {selectedCategory, selectedTransactionType, selectedAmount} = this.state;
+
+    if (selectedCategory === undefined) {
+      console.log('Выберите категорию')
+    } else if ((rubCardCash < selectedAmount) && (selectedTransactionType === 'expense')) {
+      console.log("На вашем кошельке недостаточно средств");
+    } else {
+      transactionAdded(this.state);
     }
-    console.log("На вашем кошельке недостаточно средств");
   };
 
   componentDidMount() {
     const {lastcoinService} = this.props;
-     lastcoinService.getOverviewTransactions()
+    lastcoinService.getHistoryTransactions()
       .then((data) => {
-        this.props.overviewEventsLoaded(data);
+        this.props.historyEventsLoaded(data);
       });
-     lastcoinService.getPersonCashAccount(1)
+    lastcoinService.getPersonCashAccount(1)
       .then((data) => {
         this.props.cashAccountLoaded(data);
       });
   };
 
   render() {
-    const {categories, transactionAdded} = this.props;
+    const {categories} = this.props;
     const {selectedCategory, selectedTransactionType, selectedAmount, selectedDescription} = this.state;
 
     const renderSelectItems = (categories, idx) => {
       const {id: categoryId, name} = categories;
-      console.log('row');
       return (
         <option value={categoryId} key={categoryId}>{name} {categoryId}</option>
       );
@@ -79,7 +86,7 @@ class TransactionInput extends Component {
                 value='income'
                 checked={selectedTransactionType === 'income'}
                 onChange={this.transactionTypeChange}/>
-                Income
+              Income
             </p>
             <p>
               <input
@@ -87,7 +94,7 @@ class TransactionInput extends Component {
                 value='expense'
                 checked={selectedTransactionType === 'expense'}
                 onChange={this.transactionTypeChange}/>
-                Expense
+              Expense
             </p>
           </form>
         </div>
@@ -124,7 +131,7 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = {
-  overviewEventsLoaded: overviewEventsLoaded,
+  historyEventsLoaded: historyEventsLoaded,
   cashAccountLoaded: cashAccountLoaded,
   transactionAdded: transactionAdded
 };

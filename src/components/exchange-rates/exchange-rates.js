@@ -28,13 +28,13 @@ class ExchangeRates extends Component {
               <li>
                 <span>
                   <FontAwesomeIcon icon={faEuroSign}/>
-                  {eurER}
+                  {Math.round(eurER * 100) / 100}
                 </span>
               </li>
               <li>
                 <span>
                   <FontAwesomeIcon icon={faDollarSign}/>
-                  {usdER}
+                  {Math.round(usdER * 100) / 100}
                 </span>
               </li>
             </ul>

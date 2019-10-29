@@ -9,7 +9,7 @@ export default class LastcoinService {
       fetch(`${this._localApiBase}${url}`)
         .then((response) => response.json())
         .then((body) => resolve(body))
-        .catch(() => console.log("getProfileResources error"));
+        .catch((e) => console.log("getProfileResources error:", e));
     });
   };
 
@@ -19,21 +19,20 @@ export default class LastcoinService {
     return await res;
   };
 
-  patchUpdateProfile = async (id, newProfile) => {
+  putUpdateProfile = async (id, newProfile) => {
     await fetch(`${this._localApiBase}/profile/${id}`, {
-      method: 'patch',
+      method: 'put',
       headers: {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(newProfile)
     })
       .then(res => res.json())
-      .catch(() => console.log("patchUpdateProfile error"));
-    console.log("patch newProfile", newProfile);
+      .catch((e) => console.log("putUpdateProfile error:", e));
   };
 
-//Get overview transaction-input
-  getOverviewTransactions = async () => {
+//Get history transaction-input
+  getHistoryTransactions = async () => {
     const events = await this.getPersonEvents();
     const categories = await this.getCategories();
     return {
@@ -58,7 +57,7 @@ export default class LastcoinService {
       method: 'delete'
     })
       .then(res => res.json())
-      .catch(() => console.log("delTransaction error"));
+      .catch((e) => console.log("delTransaction error:", e));
   };
 
 //Post transaction
@@ -71,8 +70,7 @@ export default class LastcoinService {
       body: JSON.stringify(newEvent)
     })
       .then(res => res.json())
-      .catch(() => console.log("postTransaction error"));
-    console.log("post newEvent", newEvent);
+      .catch((e) => console.log("postTransaction error:", e));
   };
 
 //Get exchange rates
@@ -90,7 +88,7 @@ export default class LastcoinService {
       fetch(this._globalApiApilayerCurrencyUSD)
         .then((response) => response.json())
         .then((body) => resolve(body.quotes.USDRUB))
-        .catch(() => console.log("getProfileResources error"));
+        .catch((e) => console.log("getProfileResources error:", e));
     });
   };
 
@@ -98,7 +96,7 @@ export default class LastcoinService {
     const xml = await fetch(this._proxyCors + this._globalApiCbrEUR)
       .then((response) => response.text())
       .then((body) => new DOMParser().parseFromString(body, "text/xml"))
-      .catch(() => console.log("getExchangeRates error"));
+      .catch((e) => console.log("getExchangeRates error:", e));
     let rate;
     let i = 0;
     while (rate !== 'RUB') {

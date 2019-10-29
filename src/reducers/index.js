@@ -24,8 +24,8 @@ const reducer = (state = initialState, action) => {
     case 'FETCH_EXCHANGE_RATES_SUCCESS':
       return extractExchangeRate(state, action.payload);
 
-    case 'FETCH_OVERVIEW_EVENTS_SUCCESS':
-      return extractOverviewTransactions(state, action.payload);
+    case 'FETCH_HISTORY_EVENTS_SUCCESS':
+      return extractHistoryTransactions(state, action.payload);
 
     case 'FETCH_EVENTS_SUCCESS':
       return {
@@ -61,7 +61,7 @@ const extractExchangeRate = (state, data) => {
   };
 };
 
-const extractOverviewTransactions = (state, data) => {
+const extractHistoryTransactions = (state, data) => {
   return {
     ...state,
     events: data.events,
@@ -82,10 +82,8 @@ const deleteTransaction = (state, id) => {
 };
 
 const addedTransaction = (state, data) => {
-  console.log(state.events);
   const maxId = Math.max(...state.events.map(event => event.id));
-  console.log(maxId);
-  console.log('data', data);
+
   const newEvent = {
     id: maxId + 1,
     userId: 1,
@@ -96,16 +94,22 @@ const addedTransaction = (state, data) => {
     date: "28.10.2019",
     description: data.selectedDescription
   };
-  console.log('new profile', newEvent);
 
-  const newProfile = {
-    ...state.profile,
-    rubCardCash: state.profile.rubCardCash - data.selectedAmount
-  };
-  console.log('new profile', newProfile);
+  let newProfile;
+  if (data.selectedTransactionType === 'income') {
+    newProfile = {
+      ...state.profile,
+      rubCardCash: state.profile.rubCardCash + data.selectedAmount
+    };
+  } else {
+    newProfile = {
+      ...state.profile,
+      rubCardCash: state.profile.rubCardCash - data.selectedAmount
+    };
+  }
 
   lastcoinService.postTransaction(newEvent);
-  lastcoinService.patchUpdateProfile(state.profile.id, newProfile);
+  lastcoinService.putUpdateProfile(state.profile.id, newProfile);
 
   return {
     ...state,

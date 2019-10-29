@@ -1,24 +1,24 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import './overview-transactions.scss';
+import './history-transactions.scss';
 import withLastcoinService from "../hoc/withLastcoinService";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faTrash} from "@fortawesome/free-solid-svg-icons";
-import {overviewEventsLoaded, transactionRemoved} from "../../actions";
+import {historyEventsLoaded, transactionRemoved} from "../../actions";
 
-class OverviewTransactions extends Component {
+class HistoryTransactions extends Component {
 
   componentDidMount() {
     const {lastcoinService} = this.props;
-    lastcoinService.getOverviewTransactions()
-      .then((data) => this.props.overviewEventsLoaded(data));
+    lastcoinService.getHistoryTransactions()
+      .then((data) => this.props.historyEventsLoaded(data));
   };
 
   componentDidUpdate(prevProps) {
     // if (this.props.events !== prevProps.events) {
     //   const {lastcoinService} = this.props;
-    //   lastcoinService.getOverviewTransactions()
-    //     .then((data) => this.props.overviewEventsLoaded(data));
+    //   lastcoinService.getHistoryTransactions()
+    //     .then((data) => this.props.historyEventsLoaded(data));
     // }
   };
 
@@ -51,7 +51,7 @@ class OverviewTransactions extends Component {
 
     return (
       <div>
-        <h2>Overview your transactions</h2>
+        <h2>Overview history your transactions</h2>
         <table>
           <thead>
           <tr>
@@ -81,8 +81,8 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = {
-  overviewEventsLoaded: overviewEventsLoaded,
+  historyEventsLoaded: historyEventsLoaded,
   onDelete: transactionRemoved
 };
 
-export default withLastcoinService()(connect(mapStateToProps, mapDispatchToProps)(OverviewTransactions));
+export default withLastcoinService()(connect(mapStateToProps, mapDispatchToProps)(HistoryTransactions));

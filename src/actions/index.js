@@ -12,10 +12,10 @@ const exchangeRatesLoaded = (exchangeRates) => {
   };
 };
 
-const overviewEventsLoaded = (overviewEvents) => {
+const historyEventsLoaded = (historyEvents) => {
   return {
-    type: 'FETCH_OVERVIEW_EVENTS_SUCCESS',
-    payload: overviewEvents
+    type: 'FETCH_HISTORY_EVENTS_SUCCESS',
+    payload: historyEvents
   }
 };
 
@@ -50,7 +50,7 @@ const transactionRemoved = (id) => {
 export {
   cashAccountLoaded,
   exchangeRatesLoaded,
-  overviewEventsLoaded,
+  historyEventsLoaded,
   eventsLoaded,
   categoriesLoaded,
   transactionRemoved,

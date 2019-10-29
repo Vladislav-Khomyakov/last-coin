@@ -17,15 +17,15 @@ const Navigation = () => {
           </Link>
         </li>
         <li className='nav__item'>
-          <Link to='/overview' className='nav__link'>
-            Overview
+          <Link to='/history' className='nav__link'>
+            History
           </Link>
         </li>
-        <li className='nav__item'>
+        {/*<li className='nav__item'>
           <Link to='/profile' className='nav__link'>
             Profile
           </Link>
-        </li>
+        </li>*/}
       </ul>
     </nav>
   );

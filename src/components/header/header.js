@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import "./header.scss"
-import Navigation from "../navigation/navigation";
+import Navigation from "../navigation";
 
 const Header = () => {
   return (

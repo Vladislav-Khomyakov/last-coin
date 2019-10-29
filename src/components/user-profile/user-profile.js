@@ -6,7 +6,6 @@ class UserProfile extends Component {
   componentDidMount() {
     const {lastcoinService} = this.props;
     lastcoinService.getPersonCashAccount(1).then((data) => {
-      //console.log('3', data);
       this.props.cashAccountLoaded(data);
     });
   };

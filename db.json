@@ -5,12 +5,9 @@
       "firstName": "Vladislav",
       "lastName": "Khomyakov",
       "email": "vladislav@mail.ru",
-      "rubCardCash": 15000,
+      "rubCardCash": 2241,
       "eurCardCash": 12,
-      "usdCardCash": 148,
-      "rubWalletCash": 450,
-      "eurWalletCash": 0,
-      "usdWalletCash": 10
+      "usdCardCash": 148
     },
     {
       "id": 2,
@@ -19,10 +16,7 @@
       "email": "eduard@mail.ru",
       "rubCardCash": 56800,
       "eurCardCash": 670,
-      "usdCardCash": 0,
-      "rubWalletCash": 2530,
-      "eurWalletCash": 0,
-      "usdWalletCash": 16
+      "usdCardCash": 0
     }
   ],
   "categories": [
@@ -41,16 +35,6 @@
   ],
   "events": [
     {
-      "id": 1,
-      "userId": 1,
-      "type": "income",
-      "category": 1,
-      "amount": 321,
-      "walletType": "card",
-      "date": "25.10.19",
-      "description": "test event"
-    },
-    {
       "id": 2,
       "userId": 1,
       "type": "income",
@@ -61,41 +45,11 @@
       "description": "Description"
     },
     {
-      "id": 3,
-      "userId": 1,
-      "type": "income",
-      "category": 1,
-      "amount": 100,
-      "walletType": "card",
-      "date": "28.10.2019",
-      "description": "Description"
-    },
-    {
       "id": 4,
       "userId": 1,
       "type": "income",
       "category": 1,
       "amount": 1,
-      "walletType": "card",
-      "date": "28.10.2019",
-      "description": "Description"
-    },
-    {
-      "id": 5,
-      "userId": 1,
-      "type": "income",
-      "category": 1,
-      "amount": 10000,
-      "walletType": "card",
-      "date": "28.10.2019",
-      "description": "Description"
-    },
-    {
-      "id": 6,
-      "userId": 1,
-      "type": "income",
-      "category": 1,
-      "amount": 100,
       "walletType": "card",
       "date": "28.10.2019",
       "description": "Description"
@@ -124,7 +78,7 @@
       "id": 9,
       "userId": 1,
       "type": "income",
-      "category": 1,
+      "category": 2,
       "amount": 1,
       "walletType": "card",
       "date": "28.10.2019",
@@ -133,8 +87,8 @@
     {
       "id": 10,
       "userId": 1,
-      "type": "income",
-      "category": 1,
+      "type": "expense",
+      "category": 2,
       "amount": 1,
       "walletType": "card",
       "date": "28.10.2019",
@@ -143,7 +97,7 @@
     {
       "id": 11,
       "userId": 1,
-      "type": "income",
+      "type": "expense",
       "category": 1,
       "amount": 1,
       "walletType": "card",
@@ -154,7 +108,7 @@
       "id": 12,
       "userId": 1,
       "type": "income",
-      "category": 1,
+      "category": 3,
       "amount": 1,
       "walletType": "card",
       "date": "28.10.2019",
@@ -164,8 +118,8 @@
       "id": 13,
       "userId": 1,
       "type": "income",
-      "category": 1,
-      "amount": 1,
+      "category": 3,
+      "amount": 100,
       "walletType": "card",
       "date": "28.10.2019",
       "description": "Description"
@@ -174,8 +128,88 @@
       "id": 14,
       "userId": 1,
       "type": "income",
-      "category": 1,
+      "category": 3,
+      "amount": 100,
+      "walletType": "card",
+      "date": "28.10.2019",
+      "description": "Description"
+    },
+    {
+      "id": 15,
+      "userId": 1,
+      "type": "income",
+      "category": 2,
       "amount": 1,
+      "walletType": "card",
+      "date": "28.10.2019",
+      "description": "Description"
+    },
+    {
+      "id": 16,
+      "userId": 1,
+      "type": "income",
+      "category": 2,
+      "amount": 1,
+      "walletType": "card",
+      "date": "28.10.2019",
+      "description": "Description"
+    },
+    {
+      "id": 17,
+      "userId": 1,
+      "type": "income",
+      "category": 2,
+      "amount": 1120,
+      "walletType": "card",
+      "date": "28.10.2019",
+      "description": "Description"
+    },
+    {
+      "id": 18,
+      "userId": 1,
+      "type": "income",
+      "category": 2,
+      "amount": 100000,
+      "walletType": "card",
+      "date": "28.10.2019",
+      "description": "Description"
+    },
+    {
+      "id": 19,
+      "userId": 1,
+      "type": "income",
+      "category": 2,
+      "amount": 10000000,
+      "walletType": "card",
+      "date": "28.10.2019",
+      "description": "Description"
+    },
+    {
+      "id": 20,
+      "userId": 1,
+      "type": "expense",
+      "category": 2,
+      "amount": 100000,
+      "walletType": "card",
+      "date": "28.10.2019",
+      "description": "Description"
+    },
+    {
+      "id": 21,
+      "userId": 1,
+      "type": "expense",
+      "category": 2,
+      "amount": 1000000,
+      "walletType": "card",
+      "date": "28.10.2019",
+      "description": "Description"
+    },
+    {
+      "id": 22,
+      "userId": 1,
+      "type": "expense",
+      "category": 2,
+      "amount": 9000000,
       "walletType": "card",
       "date": "28.10.2019",
       "description": "Description"
