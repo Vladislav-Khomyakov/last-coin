@@ -1,42 +1,14 @@
-import React, {Component} from "react";
-import {connect} from 'react-redux';
-import withLastcoinService from '../hoc/withLastcoinService';
+import React from "react";
 
-class UserProfile extends Component {
-  componentDidMount() {
-    const {lastcoinService} = this.props;
-    lastcoinService.getPersonCashAccount(1).then((data) => {
-      this.props.cashAccountLoaded(data);
-    });
-  };
+const UserProfile = ({profile}) => {
+  const {firstName, lastName, email} = profile;
 
-  render() {
-    const {firstName, lastName, email} = this.props.profile;
-
-    return (
-      <div>
-        <h3>Здравствуйте, {firstName} {lastName}</h3>
-        <span>Ваш Email: {email}</span>
-      </div>
-    )
-  }
-}
-
-const mapStateToProps = (state) => {
-  return {
-    profile: state.profile
-  };
+  return (
+    <div>
+      <h3>Здравствуйте, {firstName} {lastName}</h3>
+      <span>Ваш Email: {email}</span>
+    </div>
+  )
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    cashAccountLoaded: (newProfile) => {
-      dispatch({
-        type: 'FETCH_CASH_ACCOUNT_SUCCESS',
-        payload: newProfile
-      })
-    }
-  };
-};
-
-export default withLastcoinService()(connect(mapStateToProps, mapDispatchToProps)(UserProfile));
+export default UserProfile;

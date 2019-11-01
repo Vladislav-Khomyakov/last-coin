@@ -1,9 +1,9 @@
 import React from 'react';
-import TransactionInput from "../transaction-input/transaction-input";
+import TransactionsContainer from "../transactions-container";
 
 const TransactionsPage = () => {
   return (
-    <TransactionInput/>
+    <TransactionsContainer/>
   );
 };
 

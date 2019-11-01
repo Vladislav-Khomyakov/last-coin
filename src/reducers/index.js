@@ -10,22 +10,39 @@ const initialState = {
     usdER: null
   },
   events: [],
-  categories: []
+  categories: [],
+  loading: true
 };
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case 'FETCH_CASH_ACCOUNT_SUCCESS':
+    case 'FETCH_PROFILE_REQUEST':
       return {
         ...state,
-        profile: action.payload
+        profile: [],
+        loading: true
+      };
+
+    case 'FETCH_PROFILE_SUCCESS':
+      return {
+        ...state,
+        profile: action.payload,
+        loading: false
       };
 
     case 'FETCH_EXCHANGE_RATES_SUCCESS':
       return extractExchangeRate(state, action.payload);
 
-    case 'FETCH_HISTORY_EVENTS_SUCCESS':
-      return extractHistoryTransactions(state, action.payload);
+    case 'FETCH_EVENTS_AND_CATEGORIES_REQUEST':
+      return {
+        ...state,
+        events: [],
+        categories: [],
+        loading: true
+      }
+
+    case 'FETCH_EVENTS_AND_CATEGORIES_SUCCESS':
+      return extractEventsAndCategories(state, action.payload);
 
     case 'FETCH_EVENTS_SUCCESS':
       return {
@@ -61,11 +78,13 @@ const extractExchangeRate = (state, data) => {
   };
 };
 
-const extractHistoryTransactions = (state, data) => {
+const extractEventsAndCategories = (state, data) => {
+  console.log(data);
   return {
     ...state,
     events: data.events,
-    categories: data.categories
+    categories: data.categories,
+    loading: false
   };
 };
 

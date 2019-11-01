@@ -4,18 +4,18 @@ export default class LastcoinService {
   _globalApiCbrEUR = 'https://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml';
   _proxyCors = 'https://cors-anywhere.herokuapp.com/';
 
-  getProfileResources = async (url) => {
+  getResources = async (url) => {
     return await new Promise((resolve) => {
       fetch(`${this._localApiBase}${url}`)
         .then((response) => response.json())
         .then((body) => resolve(body))
-        .catch((e) => console.log("getProfileResources error:", e));
+        .catch((e) => console.log("getResources error:", e));
     });
   };
 
 //Profile
-  getPersonCashAccount = async (id) => {
-    const res = await this.getProfileResources(`/profile/${id}`);
+  getProfile = async (id) => {
+    const res = await this.getResources(`/profile/${id}`);
     return await res;
   };
 
@@ -31,8 +31,8 @@ export default class LastcoinService {
       .catch((e) => console.log("putUpdateProfile error:", e));
   };
 
-//Get history transaction-input
-  getHistoryTransactions = async () => {
+//Get events and categories transaction-input
+  getEventsAndCategories = async () => {
     const events = await this.getPersonEvents();
     const categories = await this.getCategories();
     return {
@@ -42,12 +42,12 @@ export default class LastcoinService {
   };
 
   getPersonEvents = async () => {
-    const res = await this.getProfileResources(`/events`);
+    const res = await this.getResources(`/events`);
     return await res;
   };
 
   getCategories = async () => {
-    const res = await this.getProfileResources(`/categories`);
+    const res = await this.getResources(`/categories`);
     return await res;
   };
 
@@ -88,7 +88,7 @@ export default class LastcoinService {
       fetch(this._globalApiApilayerCurrencyUSD)
         .then((response) => response.json())
         .then((body) => resolve(body.quotes.USDRUB))
-        .catch((e) => console.log("getProfileResources error:", e));
+        .catch((e) => console.log("getResources error:", e));
     });
   };
 

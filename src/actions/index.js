@@ -1,8 +1,27 @@
-const cashAccountLoaded = (profile) => {
+const ProfileRequest = () => {
   return {
-    type: 'FETCH_CASH_ACCOUNT_SUCCESS',
+    type: 'FETCH_PROFILE_REQUEST'
+  };
+};
+
+const ProfileLoaded = (profile) => {
+  return {
+    type: 'FETCH_PROFILE_SUCCESS',
     payload: profile
   };
+};
+
+const eventsAndCategoriesRequest = () => {
+  return {
+    type: 'FETCH_EVENTS_AND_CATEGORIES_REQUEST'
+  }
+};
+
+const eventsAndCategoriesLoaded = (eventsAndCategories) => {
+  return {
+    type: 'FETCH_EVENTS_AND_CATEGORIES_SUCCESS',
+    payload: eventsAndCategories
+  }
 };
 
 const exchangeRatesLoaded = (exchangeRates) => {
@@ -12,12 +31,6 @@ const exchangeRatesLoaded = (exchangeRates) => {
   };
 };
 
-const historyEventsLoaded = (historyEvents) => {
-  return {
-    type: 'FETCH_HISTORY_EVENTS_SUCCESS',
-    payload: historyEvents
-  }
-};
 
 const eventsLoaded = (categories) => {
   return {
@@ -47,12 +60,34 @@ const transactionRemoved = (id) => {
   }
 };
 
+const fetchProfile = (lastcoinService, dispatch) => (id) => {
+  dispatch(ProfileRequest());
+  lastcoinService.getProfile(id)
+    .then((data) => dispatch(ProfileLoaded(data)))
+    .catch((err) => console.log('fetchCashAccount', err))
+};
+
+const fetchEventsAndCategories = (lastcoinService, dispatch) => () => {
+  dispatch(eventsAndCategoriesRequest());
+  lastcoinService.getEventsAndCategories()
+    .then((data) => dispatch(eventsAndCategoriesLoaded(data)))
+    .catch((err) => console.log('fetchEventsAndCategories', err))
+};
+
+const fetchExchangeRates = (lastcoinService, dispatch) => () => {
+  lastcoinService.getExchangeRates()
+    .then((data) => dispatch(exchangeRatesLoaded(data)))
+    .catch((err) => console.log('fetchExchangeRates', err))
+};
+
 export {
-  cashAccountLoaded,
   exchangeRatesLoaded,
-  historyEventsLoaded,
+  eventsAndCategoriesLoaded,
   eventsLoaded,
   categoriesLoaded,
   transactionRemoved,
-  transactionAdded
+  transactionAdded,
+  fetchEventsAndCategories,
+  fetchProfile,
+  fetchExchangeRates
 };

@@ -1,3 +1,3 @@
-import Transactions from "./transaction-input";
+import TransactionInput from "./transaction-input";
 
-export default Transactions;
+export default TransactionInput;

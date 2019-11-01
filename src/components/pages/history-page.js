@@ -1,9 +1,9 @@
 import React from 'react';
-import HistoryTransactions from "../history-transactions";
+import HistoryContainer from "../history-container";
 
 const HistoryPage = () => {
   return (
-    <HistoryTransactions/>
+    <HistoryContainer/>
   );
 };
 

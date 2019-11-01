@@ -1,7 +1,79 @@
+import React from 'react';
+
+const TransactionInput = ({categories, state, handleChange, onAddedTransaction}) => {
+  const {selectedCategory, selectedTransactionType, selectedAmount, selectedDescription} = state;
+
+  const renderSelectItems = (categories) => {
+    const {id: categoryId, name} = categories;
+    return (
+      <option value={categoryId} key={categoryId}>{name} {categoryId}</option>
+    );
+  };
+
+  return (
+    <div>
+      <div>
+        <span>Select a category</span>
+        <select name='selectedCategory' value={selectedCategory} onChange={handleChange}>
+          {categories.map(renderSelectItems)}
+        </select>
+      </div>
+      <div>
+        <span>Select transaction type</span>
+        <form>
+          <p>
+            <input
+              type="radio"
+              name='selectedTransactionType'
+              value='income'
+              checked={selectedTransactionType === 'income'}
+              onChange={handleChange}/>
+            Income
+          </p>
+          <p>
+            <input
+              type="radio"
+              name='selectedTransactionType'
+              value='expense'
+              checked={selectedTransactionType === 'expense'}
+              onChange={handleChange}/>
+            Expense
+          </p>
+        </form>
+      </div>
+      <div>
+        <span>Enter amount</span>
+        <input
+          type="number"
+          min="1"
+          name='selectedAmount'
+          value={selectedAmount}
+          onChange={handleChange}/>
+      </div>
+      <div>
+        <span>Enter a description</span>
+        <input
+          type="text"
+          name='selectedDescription'
+          value={selectedDescription}
+          onChange={handleChange}/>
+      </div>
+      <div>
+        <button onClick={() => onAddedTransaction()}>
+          Add transaction
+        </button>
+      </div>
+    </div>
+  );
+};
+
+export default TransactionInput;
+
+/*
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import withLastcoinService from "../hoc/withLastcoinService";
-import {historyEventsLoaded, cashAccountLoaded, transactionAdded} from "../../actions";
+import {transactionAdded, fetchEventsAndCategories, fetchProfile} from "../../actions";
 
 class TransactionInput extends Component {
 
@@ -12,25 +84,16 @@ class TransactionInput extends Component {
     selectedDescription: 'Description'
   };
 
-  categoryChange2 = (changeEvent) => {
-    this.setState({selectedCategory: Number(changeEvent)});
-  };
-
-  categoryChange = changeEvent => {
-    console.log(changeEvent.target.value);
-    this.setState({selectedCategory: Number(changeEvent.target.value)});
-  };
-
-  transactionTypeChange = changeEvent => {
-    this.setState({selectedTransactionType: String(changeEvent.target.value)});
-  };
-
-  amountChange = changeEvent => {
-    this.setState({selectedAmount: Number(changeEvent.target.value)});
-  };
-
-  descriptionChange = changeEvent => {
-    this.setState({selectedDescription: String(changeEvent.target.value)});
+  handleChange = changeEvent => {
+    if (changeEvent.target.name === 'selectedCategory') {
+      this.setState({selectedCategory: Number(changeEvent.target.value)})
+    } else if (changeEvent.target.name === 'selectedTransactionType') {
+      this.setState({selectedTransactionType: String(changeEvent.target.value)})
+    } else if (changeEvent.target.name === 'selectedAmount') {
+      this.setState({selectedAmount: String(changeEvent.target.value)})
+    } else {
+      this.setState({selectedDescription: String(changeEvent.target.value)})
+    }
   };
 
   pushNewTransaction = () => {
@@ -47,22 +110,15 @@ class TransactionInput extends Component {
   };
 
   componentDidMount() {
-    const {lastcoinService} = this.props;
-    lastcoinService.getHistoryTransactions()
-      .then((data) => {
-        this.props.historyEventsLoaded(data);
-      });
-    lastcoinService.getPersonCashAccount(1)
-      .then((data) => {
-        this.props.cashAccountLoaded(data);
-      });
+    this.props.fetchEventsAndCategories();
+    this.props.fetchProfile(1);
   };
 
   render() {
     const {categories} = this.props;
     const {selectedCategory, selectedTransactionType, selectedAmount, selectedDescription} = this.state;
 
-    const renderSelectItems = (categories, idx) => {
+    const renderSelectItems = (categories) => {
       const {id: categoryId, name} = categories;
       return (
         <option value={categoryId} key={categoryId}>{name} {categoryId}</option>
@@ -73,7 +129,7 @@ class TransactionInput extends Component {
       <div>
         <div>
           <span>Select a category</span>
-          <select value={selectedCategory} onChange={this.categoryChange}>
+          <select name='selectedCategory' value={selectedCategory} onChange={this.handleChange}>
             {categories.map(renderSelectItems)}
           </select>
         </div>
@@ -83,17 +139,19 @@ class TransactionInput extends Component {
             <p>
               <input
                 type="radio"
+                name='selectedTransactionType'
                 value='income'
                 checked={selectedTransactionType === 'income'}
-                onChange={this.transactionTypeChange}/>
+                onChange={this.handleChange}/>
               Income
             </p>
             <p>
               <input
                 type="radio"
+                name='selectedTransactionType'
                 value='expense'
                 checked={selectedTransactionType === 'expense'}
-                onChange={this.transactionTypeChange}/>
+                onChange={this.handleChange}/>
               Expense
             </p>
           </form>
@@ -103,15 +161,17 @@ class TransactionInput extends Component {
           <input
             type="number"
             min="1"
+            name='selectedAmount'
             value={selectedAmount}
-            onChange={this.amountChange}/>
+            onChange={this.handleChange}/>
         </div>
         <div>
           <span>Enter a description</span>
           <input
             type="text"
+            name='selectedDescription'
             value={selectedDescription}
-            onChange={this.descriptionChange}/>
+            onChange={this.handleChange}/>
         </div>
         <div>
           <button onClick={() => this.pushNewTransaction()}>
@@ -130,10 +190,14 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = {
-  historyEventsLoaded: historyEventsLoaded,
-  cashAccountLoaded: cashAccountLoaded,
-  transactionAdded: transactionAdded
+const mapDispatchToProps = (dispatch, ownProps) => {
+  const {lastcoinService} = ownProps;
+  return {
+    fetchEventsAndCategories: fetchEventsAndCategories(lastcoinService, dispatch),
+    fetchProfile: fetchProfile(lastcoinService, dispatch),
+    transactionAdded: (data) => dispatch(transactionAdded(data))
+  };
 };
 
 export default withLastcoinService()(connect(mapStateToProps, mapDispatchToProps)(TransactionInput));
+*/

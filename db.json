@@ -5,7 +5,7 @@
       "firstName": "Vladislav",
       "lastName": "Khomyakov",
       "email": "vladislav@mail.ru",
-      "rubCardCash": 2241,
+      "rubCardCash": 1001,
       "eurCardCash": 12,
       "usdCardCash": 148
     },
@@ -155,16 +155,6 @@
       "description": "Description"
     },
     {
-      "id": 17,
-      "userId": 1,
-      "type": "income",
-      "category": 2,
-      "amount": 1120,
-      "walletType": "card",
-      "date": "28.10.2019",
-      "description": "Description"
-    },
-    {
       "id": 18,
       "userId": 1,
       "type": "income",
@@ -205,11 +195,21 @@
       "description": "Description"
     },
     {
-      "id": 22,
+      "id": 23,
       "userId": 1,
-      "type": "expense",
+      "type": "income",
       "category": 2,
-      "amount": 9000000,
+      "amount": 1,
+      "walletType": "card",
+      "date": "28.10.2019",
+      "description": "Description"
+    },
+    {
+      "id": 25,
+      "userId": 1,
+      "type": "income",
+      "category": 2,
+      "amount": 1,
       "walletType": "card",
       "date": "28.10.2019",
       "description": "Description"
