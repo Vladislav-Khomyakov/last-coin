@@ -14,14 +14,14 @@ class TransactionsContainer extends Component {
   };
 
   handleChange = changeEvent => {
-    if (changeEvent.target.name === 'selectedCategory') {
-      this.setState({selectedCategory: Number(changeEvent.target.value)})
-    } else if (changeEvent.target.name === 'selectedTransactionType') {
-      this.setState({selectedTransactionType: String(changeEvent.target.value)})
-    } else if (changeEvent.target.name === 'selectedAmount') {
-      this.setState({selectedAmount: String(changeEvent.target.value)})
-    } else {
-      this.setState({selectedDescription: String(changeEvent.target.value)})
+    const targetName = changeEvent.target.name;
+    const targetValue = changeEvent.target.value;
+    const selectedEvent = {};
+
+    if (Object.entries(this.state).some(([key]) => key === targetName)) {
+      selectedEvent[targetName] = (targetName === 'selectedCategory' || targetName === 'selectedAmount') ? Number(targetValue) : String(targetValue);
+      this.setState(selectedEvent);
+      setTimeout(() => console.log(this.state), 0);
     }
   };
 
