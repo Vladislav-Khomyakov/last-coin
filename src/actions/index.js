@@ -14,14 +14,14 @@ const ProfileLoaded = (profile) => {
 const eventsAndCategoriesRequest = () => {
   return {
     type: 'FETCH_EVENTS_AND_CATEGORIES_REQUEST'
-  }
+  };
 };
 
 const eventsAndCategoriesLoaded = (eventsAndCategories) => {
   return {
     type: 'FETCH_EVENTS_AND_CATEGORIES_SUCCESS',
     payload: eventsAndCategories
-  }
+  };
 };
 
 const exchangeRatesLoaded = (exchangeRates) => {
@@ -31,6 +31,26 @@ const exchangeRatesLoaded = (exchangeRates) => {
   };
 };
 
+const transactionAdded = (data) => {
+  return {
+    type: 'TRANSACTION_ADDED',
+    payload: data
+  };
+};
+
+const transactionRemoved = (id) => {
+  return {
+    type: 'TRANSACTION_REMOVED',
+    payload: id
+  };
+};
+
+const categoryAdded = (data) => {
+  return {
+    type: 'CATEGORY_ADDED',
+    payload: data
+  };
+};
 
 const eventsLoaded = (categories) => {
   return {
@@ -43,20 +63,6 @@ const categoriesLoaded = (categories) => {
   return {
     type: 'FETCH_CATEGORIES_SUCCESS',
     payload: categories
-  }
-};
-
-const transactionAdded = (data) => {
-  return {
-    type: 'TRANSACTION_ADDED',
-    payload: data
-  }
-};
-
-const transactionRemoved = (id) => {
-  return {
-    type: 'TRANSACTION_REMOVED',
-    payload: id
   }
 };
 
@@ -89,5 +95,6 @@ export {
   transactionAdded,
   fetchEventsAndCategories,
   fetchProfile,
-  fetchExchangeRates
+  fetchExchangeRates,
+  categoryAdded
 };

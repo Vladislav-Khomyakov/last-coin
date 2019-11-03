@@ -9,8 +9,9 @@ const HistoryTransactions = ({events, categories, onDelete}) => {
 
     const categoryName = () => {
       const categoryName = categories.find(categories => categories.id === category);
-      return categoryName.name;
+      console.log(categoryName.name);
     };
+
     return (
       <tr key={eventsId}>
         <td>{idx + 1}</td>

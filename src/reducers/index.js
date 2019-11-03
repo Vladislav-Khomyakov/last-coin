@@ -39,7 +39,7 @@ const reducer = (state = initialState, action) => {
         events: [],
         categories: [],
         loading: true
-      }
+      };
 
     case 'FETCH_EVENTS_AND_CATEGORIES_SUCCESS':
       return extractEventsAndCategories(state, action.payload);
@@ -62,6 +62,9 @@ const reducer = (state = initialState, action) => {
     case 'TRANSACTION_REMOVED':
       return deleteTransaction(state, action.payload);
 
+    case 'CATEGORY_ADDED':
+      return addedCategory(state, action.payload);
+
     default:
       return state;
   }
@@ -79,7 +82,6 @@ const extractExchangeRate = (state, data) => {
 };
 
 const extractEventsAndCategories = (state, data) => {
-  console.log(data);
   return {
     ...state,
     events: data.events,
@@ -134,8 +136,26 @@ const addedTransaction = (state, data) => {
     ...state,
     profile: newProfile,
     events: [
-      state.events.slice(0, maxId - 1),
+      ...state.events.slice(0, maxId - 1),
       newEvent
+    ]
+  }
+};
+
+const addedCategory = (state, data) => {
+  const maxId = Math.max(...state.categories.map(event => event.id));
+
+  const newCategory = {
+    id: maxId + 1,
+    name: data.selectedCategoryName
+  };
+
+  lastcoinService.postCategory(newCategory);
+  return {
+    ...state,
+    categories: [
+      ...state.categories.slice(0, maxId - 1),
+      newCategory
     ]
   }
 };

@@ -6,7 +6,7 @@ const TransactionInput = ({categories, state, handleChange, onAddedTransaction})
   const renderSelectItems = (categories) => {
     const {id: categoryId, name} = categories;
     return (
-      <option value={categoryId} key={categoryId}>{name} {categoryId}</option>
+      <option value={categoryId} key={categoryId}>{name}</option>
     );
   };
 

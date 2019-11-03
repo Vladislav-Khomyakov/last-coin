@@ -73,6 +73,19 @@ export default class LastcoinService {
       .catch((e) => console.log("postTransaction error:", e));
   };
 
+//Post category
+  postCategory = async (newCategory) => {
+    await fetch(`${this._localApiBase}/categories`, {
+      method: 'post',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(newCategory)
+    })
+      .then(res => res.json())
+      .catch((e) => console.log("postTransaction error:", e));
+  };
+
 //Get exchange rates
   getExchangeRates = async () => {
     const currencyEUR = await this.getCurrencyEUR();

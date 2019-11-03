@@ -6,20 +6,29 @@ import Spinner from "../spinner";
 import HistoryTransactions from "../history-transactions";
 
 class HistoryContainer extends Component {
+  state = {
+    update: false
+  };
+
   componentDidMount() {
     this.props.fetchEventsAndCategories();
   };
 
-  componentDidUpdate(prevProps) {
-    // if (this.props.events !== prevProps.events) {
-    //   const {lastcoinService} = this.props;
-    //   lastcoinService.getEventsAndCategories()
-    //     .then((data) => this.props.eventsAndCategoriesLoaded(data));
-    // }
+  componentDidUpdate() {
+    if (this.state.update === true) {
+      setTimeout(() => this.props.fetchEventsAndCategories(), 1);
+      this.setState({update: false});
+    }
+  };
+
+  onDelete = (eventsId) => {
+    const {transactionRemoved} = this.props;
+    transactionRemoved(eventsId);
+    this.setState({update: true});
   };
 
   render() {
-    const {events, categories, loading, onDelete} = this.props;
+    const {events, categories, loading} = this.props;
 
     if (loading) {
       return <Spinner/>
@@ -29,7 +38,7 @@ class HistoryContainer extends Component {
       <HistoryTransactions
         events={events}
         categories={categories}
-        onDelete={onDelete}/>
+        onDelete={this.onDelete}/>
     )
   }
 }
@@ -41,7 +50,7 @@ const mapStateToProps = ({events, categories, loading}) => {
 const mapDispatchToProps = (dispatch, {lastcoinService}) => {
   return {
     fetchEventsAndCategories: fetchEventsAndCategories(lastcoinService, dispatch),
-    onDelete: (data) => dispatch(transactionRemoved(data))
+    transactionRemoved: (data) => dispatch(transactionRemoved(data))
   };
 };
 
