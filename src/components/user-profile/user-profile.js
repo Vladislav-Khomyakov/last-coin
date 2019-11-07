@@ -1,12 +1,12 @@
 import React from "react";
+import './user-profile.scss'
 
 const UserProfile = ({profile}) => {
-  const {firstName, lastName, email} = profile;
+  const {firstName} = profile;
 
   return (
-    <div>
-      <h3>Здравствуйте, {firstName} {lastName}</h3>
-      <span>Ваш Email: {email}</span>
+    <div className="user-profile">
+      <h2>Hello {firstName}</h2>
     </div>
   )
 };

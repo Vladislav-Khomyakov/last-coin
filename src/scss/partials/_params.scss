@@ -1,9 +1,15 @@
 //Colors
-$bg: #ffffff;
-$bg-header: #424453;
-$second-color: #6c7ffa;
+$white: #ffffff;
+$darkslategray: #424453;
+$cornflowerblue: #6c7ffa;
+
+//Colors-element
+$bg: $white;
+$bg-header: $darkslategray;
+$second-color: $cornflowerblue;
+$darken-second-color: darken($second-color, 5%);
 $font: #6E7386;
-$font-header: #ffffff;
+$font-header: $white;
 
 // Sized
 //view-port

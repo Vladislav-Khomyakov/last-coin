@@ -1,4 +1,5 @@
 import React from 'react';
+import './transaction-input.scss';
 
 const TransactionInput = ({categories, state, handleChange, onAddedTransaction}) => {
   const {selectedCategory, selectedTransactionType, selectedAmount, selectedDescription} = state;
@@ -11,10 +12,11 @@ const TransactionInput = ({categories, state, handleChange, onAddedTransaction})
   };
 
   return (
-    <div>
-      <div>
-        <span>Select a category</span>
+    <div className='transaction-input'>
+      <div className='transaction-input__category-input'>
+        <span>Select a category:</span>
         <select name='selectedCategory' value={selectedCategory} onChange={handleChange}>
+          <option value='-1'> </option>
           {categories.map(renderSelectItems)}
         </select>
       </div>

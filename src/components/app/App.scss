@@ -1,1 +1,15 @@
+.app{
+  &__navigation {
+    position: absolute;
+    z-index: 99;
+  }
+  &__content-wrapper {
+    transition: 1s;
+    position: relative;
+    z-index: 1;
 
+    &_active {
+      transform: translateX(21.1%);
+    }
+  }
+}

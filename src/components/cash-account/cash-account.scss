@@ -3,9 +3,10 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 250px;
-  width: 250px;
-  margin: 25px;
+  height: 180px;
+  width: 300px;
+  margin: 10px 0 0 20px;
+  padding: 0;
   border: 2px solid grey;
   border-radius: 6px;
 
@@ -44,5 +45,9 @@
     margin: 0;
     padding: 0;
     list-style: none;
+  }
+
+  &__currency-icon {
+    margin-right: 5px;
   }
 }

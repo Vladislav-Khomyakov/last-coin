@@ -1,4 +1,5 @@
 @import "../../scss/partials/params";
+@import "../../scss/partials/mixins";
 
 .header {
   display: flex;
@@ -7,7 +8,12 @@
   padding: 0;
 
   &__title {
-    padding-left: 10px;
+    padding-left: 70px;
+  }
+
+  &__icon {
+    margin-right: 10px;
+    color: $second-color;
   }
 
   &__link {
@@ -19,7 +25,7 @@
     }
 
     &:active {
-      color: darken($second-color, 5%);
+      color: $darken-second-color;
     }
   }
 }

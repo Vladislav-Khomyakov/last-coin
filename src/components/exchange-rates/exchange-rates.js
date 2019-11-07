@@ -16,13 +16,13 @@ const ExchangeRates = ({exchangeRates}) => {
           <ul className='cash-account__list'>
             <li>
               <span>
-                <FontAwesomeIcon icon={faEuroSign}/>
+                <FontAwesomeIcon icon={faEuroSign} className='cash-account__currency-icon'/>
                 {Math.round(eurER * 100) / 100}
               </span>
             </li>
             <li>
               <span>
-                <FontAwesomeIcon icon={faDollarSign}/>
+                <FontAwesomeIcon icon={faDollarSign} className='cash-account__currency-icon'/>
                 {Math.round(usdER * 100) / 100}
               </span>
             </li>

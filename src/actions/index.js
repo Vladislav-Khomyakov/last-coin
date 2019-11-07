@@ -52,6 +52,12 @@ const categoryAdded = (data) => {
   };
 };
 
+const activationMenu = () => {
+  return {
+    type: 'ACTIVATION_MENU'
+  };
+};
+
 const eventsLoaded = (categories) => {
   return {
     type: 'FETCH_EVENTS_SUCCESS',
@@ -96,5 +102,6 @@ export {
   fetchEventsAndCategories,
   fetchProfile,
   fetchExchangeRates,
-  categoryAdded
+  categoryAdded,
+  activationMenu
 };

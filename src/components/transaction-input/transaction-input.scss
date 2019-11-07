@@ -1,0 +1,15 @@
+.transaction-input {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 350px;
+  width: 350px;
+  margin: 10px 0 0 20px;
+  padding: 0;
+  border: 2px solid grey;
+  border-radius: 6px;
+
+  &__category-input {
+  }
+}

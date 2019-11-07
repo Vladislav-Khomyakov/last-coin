@@ -10,7 +10,7 @@ class TransactionsContainer extends Component {
 
   state = {
     transactionInput: {
-      selectedCategory: undefined,
+      selectedCategory: -1,
       selectedTransactionType: "income",
       selectedAmount: 1,
       selectedDescription: 'Description'
@@ -55,7 +55,7 @@ class TransactionsContainer extends Component {
     const {profile: {rubCardCash}, transactionAdded} = this.props;
     const {selectedCategory, selectedTransactionType, selectedAmount} = this.state.transactionInput;
 
-    if (selectedCategory === undefined) {
+    if (selectedCategory === -1) {
       console.log('Выберите категорию')
     } else if ((rubCardCash < selectedAmount) && (selectedTransactionType === 'expense')) {
       console.log("На вашем кошельке недостаточно средств");
@@ -65,7 +65,7 @@ class TransactionsContainer extends Component {
   };
 
   onAddedCategory = () => {
-    const {categories: {name}, categoryAdded} = this.props;
+    const {categoryAdded} = this.props;
     const {selectedCategoryName} = this.state.categoryInput;
 
     if (selectedCategoryName === "") {

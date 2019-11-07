@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import withLastcoinService from "../hoc/withLastcoinService";
 import {connect} from "react-redux";
+import './account-container.scss';
 import {fetchProfile, fetchExchangeRates} from "../../actions";
 import Spinner from "../spinner";
 import CashAccount from "../cash-account";
@@ -24,7 +25,7 @@ class AccountContainer extends Component {
       <>
         <UserProfile
           profile={profile}/>
-        <div>
+        <div className="account-container">
           <CashAccount
             profile={profile}/>
           <ExchangeRates

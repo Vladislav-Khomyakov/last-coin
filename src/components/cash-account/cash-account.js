@@ -13,23 +13,25 @@ const CashAccount = ({profile}) => {
           <FontAwesomeIcon icon={faCreditCard} size="2x"/>
         </div>
         <div>
-          <h3 className='cash-account__title'>Card</h3>
+          <h3 className='cash-account__title'>
+            Card
+          </h3>
           <ul className='cash-account__list'>
             <li>
               <span>
-                <FontAwesomeIcon icon={faRubleSign}/>
+                <FontAwesomeIcon icon={faRubleSign} className='cash-account__currency-icon'/>
                 {rubCardCash}
               </span>
             </li>
             <li>
               <span>
-                <FontAwesomeIcon icon={faEuroSign}/>
+                <FontAwesomeIcon icon={faEuroSign} className='cash-account__currency-icon'/>
                 {eurCardCash}
               </span>
             </li>
             <li>
               <span>
-                <FontAwesomeIcon icon={faDollarSign}/>
+                <FontAwesomeIcon icon={faDollarSign} className='cash-account__currency-icon'/>
                 {usdCardCash}
               </span>
             </li>

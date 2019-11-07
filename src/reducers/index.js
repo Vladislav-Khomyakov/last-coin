@@ -11,7 +11,8 @@ const initialState = {
   },
   events: [],
   categories: [],
-  loading: true
+  loading: true,
+  menuActivity: false
 };
 
 const reducer = (state = initialState, action) => {
@@ -64,6 +65,12 @@ const reducer = (state = initialState, action) => {
 
     case 'CATEGORY_ADDED':
       return addedCategory(state, action.payload);
+
+    case 'ACTIVATION_MENU':
+      return {
+        ...state,
+        menuActivity: !state.menuActivity
+      };
 
     default:
       return state;
