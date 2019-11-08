@@ -31,46 +31,6 @@
     {
       "id": 3,
       "name": "Transport"
-    },
-    {
-      "id": 4,
-      "name": "1"
-    },
-    {
-      "id": 5,
-      "name": "3"
-    },
-    {
-      "id": 6,
-      "name": "d"
-    },
-    {
-      "id": 7,
-      "name": "fvas"
-    },
-    {
-      "id": 8,
-      "name": "f"
-    },
-    {
-      "id": 9,
-      "name": "у"
-    },
-    {
-      "id": 10,
-      "name": "nm"
-    },
-    {
-      "id": 11,
-      "name": "f"
-    },
-    {
-      "id": 12,
-      "name": "g"
-    },
-    {
-      "id": 13,
-      "name": "test"
     }
   ],
   "events": [
@@ -155,87 +115,7 @@
       "description": "Description"
     },
     {
-      "id": 20,
-      "userId": 1,
-      "type": "income",
-      "category": 3,
-      "amount": 1,
-      "walletType": "card",
-      "date": "28.10.2019",
-      "description": "Description"
-    },
-    {
-      "id": 21,
-      "userId": 1,
-      "type": "income",
-      "category": 2,
-      "amount": 1,
-      "walletType": "card",
-      "date": "28.10.2019",
-      "description": "Description"
-    },
-    {
-      "id": 22,
-      "userId": 1,
-      "type": "income",
-      "category": 2,
-      "amount": 1,
-      "walletType": "card",
-      "date": "28.10.2019",
-      "description": "Description"
-    },
-    {
-      "id": 23,
-      "userId": 1,
-      "type": "income",
-      "category": 2,
-      "amount": 1,
-      "walletType": "card",
-      "date": "28.10.2019",
-      "description": "Description"
-    },
-    {
-      "id": 24,
-      "userId": 1,
-      "type": "income",
-      "category": 2,
-      "amount": 1,
-      "walletType": "card",
-      "date": "28.10.2019",
-      "description": "Description"
-    },
-    {
-      "id": 25,
-      "userId": 1,
-      "type": "income",
-      "category": 2,
-      "amount": 1,
-      "walletType": "card",
-      "date": "28.10.2019",
-      "description": "Description"
-    },
-    {
-      "id": 26,
-      "userId": 1,
-      "type": "income",
-      "category": 2,
-      "amount": 1,
-      "walletType": "card",
-      "date": "28.10.2019",
-      "description": "Description"
-    },
-    {
       "id": 27,
-      "userId": 1,
-      "type": "income",
-      "category": 2,
-      "amount": 1,
-      "walletType": "card",
-      "date": "28.10.2019",
-      "description": "Description"
-    },
-    {
-      "id": 28,
       "userId": 1,
       "type": "income",
       "category": 2,

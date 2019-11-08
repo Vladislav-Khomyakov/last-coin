@@ -17,3 +17,18 @@
     outline: none;
   }
 }
+
+@mixin button-pseudo-class {
+  &:hover {
+    color: $second-color;
+  }
+
+  &:active {
+    color: $darken-second-color;
+  }
+}
+
+@mixin border {
+  border: 2px solid grey;
+  border-radius: 6px;
+}

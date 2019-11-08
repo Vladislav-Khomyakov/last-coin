@@ -1,0 +1,59 @@
+@import "../../scss/partials/mixins";
+@import "../../scss/partials/params";
+
+.history-transactions {
+  display: flex;
+  flex-direction: column;
+  margin: 10px 0 20px 20px;
+  padding: 0;
+
+  &__title {
+    width: 98%;
+    border-bottom: 2px solid lightgrey;
+  }
+
+  &__table-wrapper {
+    @include border;
+    max-width: 96.5%;
+    padding: 10px;
+  }
+
+  &__t-title {
+    padding: 0;
+    margin: 0 0 10px 10px;
+  }
+
+  &__table {
+    border-collapse: collapse;
+    width: 100%;
+    border: none;
+  }
+
+  &__thead {
+    color: $second-color;
+  }
+
+  &__tbody {
+
+    text-align: center;
+  }
+
+  &__row {
+    border-top: 1px solid lightgrey;
+
+    &_white {
+      background-color: $bg;
+    }
+
+    &_grey {
+      background-color: darken($bg, 15%);
+    }
+  }
+
+
+
+  &__del-button {
+    @include button-reset;
+    @include button-pseudo-class;
+  }
+}

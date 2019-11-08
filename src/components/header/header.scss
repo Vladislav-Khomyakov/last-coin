@@ -8,7 +8,12 @@
   padding: 0;
 
   &__title {
-    padding-left: 70px;
+    padding-left: 85px;
+    transition: 1s;
+
+    &_active {
+      transform: translateX(300px);
+    }
   }
 
   &__icon {

@@ -9,11 +9,18 @@ const HistoryTransactions = ({events, categories, onDelete}) => {
 
     const categoryName = () => {
       const categoryName = categories.find(categories => categories.id === category);
-      console.log(categoryName.name);
+      return categoryName.name;
     };
 
+    let tbodyItemClassName;
+    if ((idx % 2) === 0) {
+      tbodyItemClassName = 'history-transactions__row history-transactions__row_white';
+    } else {
+      tbodyItemClassName = 'history-transactions__row history-transactions__row_grey';
+    }
+
     return (
-      <tr key={eventsId}>
+      <tr key={eventsId} className={tbodyItemClassName}>
         <td>{idx + 1}</td>
         <td>{type}</td>
         <td>{categoryName()}</td>
@@ -22,7 +29,7 @@ const HistoryTransactions = ({events, categories, onDelete}) => {
         <td>{date}</td>
         <td>{description}</td>
         <td>
-          <button onClick={() => onDelete(eventsId)}>
+          <button onClick={() => onDelete(eventsId)} className='history-transactions__del-button'>
             <FontAwesomeIcon icon={faTrash}/>
           </button>
         </td>
@@ -31,24 +38,32 @@ const HistoryTransactions = ({events, categories, onDelete}) => {
   };
 
   return (
-    <div>
-      <h2>Overview history your transactions</h2>
-      <table>
-        <thead>
-        <tr>
-          <th>#</th>
-          <th>Type</th>
-          <th>Category</th>
-          <th>Amount</th>
-          <th>Wallet type</th>
-          <th>Data</th>
-          <th>Description</th>
-        </tr>
-        </thead>
-        <tbody>
-        {events.map(renderRow)}
-        </tbody>
-      </table>
+    <div className='history-transactions'>
+      <h2 className='history-transactions__title'>
+        Overview history your transactions
+      </h2>
+      <div className="history-transactions__table-wrapper">
+        <h3 className='history-transactions__t-title'>
+          Events list
+        </h3>
+        <table className='history-transactions__table'>
+          <thead className='history-transactions__thead'>
+            <tr className='history-transactions__row'>
+              <th>#</th>
+              <th>Type</th>
+              <th>Category</th>
+              <th>Amount</th>
+              <th>Wallet type</th>
+              <th>Data</th>
+              <th>Description</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody className='history-transactions__tbody'>
+            {events.map(renderRow)}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 };
