@@ -1,0 +1,14 @@
+@import "../../scss/partials/params";
+@import "../../scss/partials/mixins";
+
+.category-input {
+  @include clear;
+  @include border;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-left: 10px;
+  height: 350px;
+  width: 350px;
+}

@@ -4,7 +4,7 @@
 .history-transactions {
   display: flex;
   flex-direction: column;
-  margin: 10px 0 20px 20px;
+  margin: $margin-content;
   padding: 0;
 
   &__title {

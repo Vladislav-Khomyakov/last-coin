@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from "react-redux";
+import './transaction-container.scss'
 import withLastcoinService from "../hoc/withLastcoinService";
 import {fetchEventsAndCategories, fetchProfile, transactionAdded, categoryAdded} from "../../actions";
 import Spinner from "../spinner";
@@ -13,7 +14,7 @@ class TransactionsContainer extends Component {
       selectedCategory: -1,
       selectedTransactionType: "income",
       selectedAmount: 1,
-      selectedDescription: 'Description'
+      selectedDescription: ''
     },
     categoryInput: {
       selectedCategoryName: ""
@@ -84,7 +85,7 @@ class TransactionsContainer extends Component {
     }
 
     return (
-      <div>
+      <div className='transaction-container'>
         <TransactionInput
           categories={categories}
           state={this.state.transactionInput}

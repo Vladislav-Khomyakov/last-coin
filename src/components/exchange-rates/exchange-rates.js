@@ -1,6 +1,6 @@
 import React from 'react';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faEuroSign, faDollarSign, faMoneyBillWaveAlt, faCreditCard} from '@fortawesome/free-solid-svg-icons';
+import {faEuroSign, faDollarSign, faMoneyBillWaveAlt} from '@fortawesome/free-solid-svg-icons';
 
 const ExchangeRates = ({exchangeRates}) => {
   const {eurER, usdER} = exchangeRates;

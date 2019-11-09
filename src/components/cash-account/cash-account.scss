@@ -6,7 +6,7 @@
   flex-direction: column;
   height: 180px;
   width: 300px;
-  margin: 10px 0 0 20px;
+  margin: $margin-content;
   padding: 20px;
   @include border;
 
@@ -38,13 +38,6 @@
     }
   }
 
-  &__line {
-    display: flex;
-    width: 100%;
-    height: 2px;
-    background-color: grey;
-  }
-
   &__list {
     margin: 0;
     padding: 0;
@@ -53,6 +46,13 @@
 
   &__item {
     margin-bottom: 10px;
+  }
+
+  &__line {
+    display: flex;
+    width: 100%;
+    height: 2px;
+    background-color: grey;
   }
 
   &__currency-icon {

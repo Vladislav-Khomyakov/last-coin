@@ -1,15 +1,21 @@
+@import "../../scss/partials/mixins";
+@import "../../scss/partials/params";
+
 .transaction-input {
+  @include clear;
+  @include border;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 350px;
   width: 350px;
-  margin: 10px 0 0 20px;
-  padding: 0;
-  border: 2px solid grey;
-  border-radius: 6px;
+  margin-right: 10px;
 
-  &__category-input {
+  &__add-transaction-button {
+    @include button-reset;
+    @include border;
+    border-color: $second-color;
+    padding: 3px;
   }
 }

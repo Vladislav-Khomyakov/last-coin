@@ -1,10 +1,11 @@
 import React from 'react';
+import './category-input.scss'
 
 const CategoryInput = ({state, handleChange, onAddedCategory}) => {
   const {selectedCategoryName} = state;
 
   return (
-    <div>
+    <div className='category-input'>
       <div>
         <span>Enter a name</span>
         <input
