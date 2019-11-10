@@ -1,8 +1,9 @@
-.app{
+.app {
   &__navigation {
     position: absolute;
     z-index: 99;
   }
+
   &__content-wrapper {
     transition: 0.5s;
     position: relative;

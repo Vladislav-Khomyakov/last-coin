@@ -1,12 +1,12 @@
 import React, {Component} from 'react';
-import withLastcoinService from "../hoc/withLastcoinService";
+import withLastCoinServices from "../hoc/withLastCoinServices";
 import {connect} from "react-redux";
 import './account-container.scss';
 import {fetchProfile, fetchExchangeRates} from "../../actions";
 import Spinner from "../spinner";
-import CashAccount from "../cash-account";
-import UserProfile from "../user-profile";
-import ExchangeRates from "../exchange-rates";
+import CashAccount from "./cash-account";
+import UserProfile from "./user-profile";
+import ExchangeRates from "./exchange-rates";
 
 class AccountContainer extends Component {
   componentDidMount() {
@@ -40,11 +40,11 @@ const mapStateToProps = ({profile, loading, exchangeRates}) => {
   return {profile, loading, exchangeRates};
 };
 
-const mapDispatchToProps = (dispatch, {lastcoinService}) => {
+const mapDispatchToProps = (dispatch, {lastCoinServiceRequest}) => {
   return {
-    fetchProfile: fetchProfile(lastcoinService, dispatch),
-    fetchExchangeRates: fetchExchangeRates(lastcoinService, dispatch)
+    fetchProfile: fetchProfile(lastCoinServiceRequest, dispatch),
+    fetchExchangeRates: fetchExchangeRates(lastCoinServiceRequest, dispatch)
   };
 };
 
-export default withLastcoinService()(connect(mapStateToProps, mapDispatchToProps)(AccountContainer));
+export default withLastCoinServices()(connect(mapStateToProps, mapDispatchToProps)(AccountContainer));

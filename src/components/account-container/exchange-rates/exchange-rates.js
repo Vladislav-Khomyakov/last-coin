@@ -19,22 +19,22 @@ const ExchangeRates = ({exchangeRates}) => {
         </p>
       </div>
       <div>
-          <ul className='cash-account__list'>
-            <li className='cash-account__item'>
+        <ul className='cash-account__list'>
+          <li className='cash-account__item'>
               <span>
                 <FontAwesomeIcon icon={faEuroSign} className='cash-account__currency-icon'/>
                 {moneyFormat(Math.round(eurER * 100) / 100)}
               </span>
-              <span className='cash-account__line'> </span>
-            </li>
-            <li className='cash-account__item'>
+            <span className='cash-account__line'> </span>
+          </li>
+          <li className='cash-account__item'>
               <span>
                 <FontAwesomeIcon icon={faDollarSign} className='cash-account__currency-icon'/>
                 {moneyFormat(Math.round(usdER * 100) / 100)}
               </span>
-              <span className='cash-account__line'> </span>
-            </li>
-          </ul>
+            <span className='cash-account__line'> </span>
+          </li>
+        </ul>
       </div>
     </div>
   );

@@ -10,10 +10,6 @@
   &__title {
     padding-left: 85px;
     transition: 0.5s;
-
-    &_active {
-      transform: translateX(300px);
-    }
   }
 
   &__icon {

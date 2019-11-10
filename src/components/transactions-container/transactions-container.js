@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
 import {connect} from "react-redux";
 import './transaction-container.scss'
-import withLastcoinService from "../hoc/withLastcoinService";
+import withLastCoinServices from "../hoc/withLastCoinServices";
 import {fetchEventsAndCategories, fetchProfile, transactionAdded, categoryAdded} from "../../actions";
 import Spinner from "../spinner";
-import TransactionInput from "../transaction-input";
-import CategoryInput from "../category-input";
+import TransactionInput from "./transaction-input";
+import CategoryInput from "./category-input";
 
 class TransactionsContainer extends Component {
 
@@ -110,13 +110,13 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => {
-  const {lastcoinService} = ownProps;
+  const {lastCoinServiceRequest} = ownProps;
   return {
-    fetchEventsAndCategories: fetchEventsAndCategories(lastcoinService, dispatch),
-    fetchProfile: fetchProfile(lastcoinService, dispatch),
+    fetchEventsAndCategories: fetchEventsAndCategories(lastCoinServiceRequest, dispatch),
+    fetchProfile: fetchProfile(lastCoinServiceRequest, dispatch),
     transactionAdded: (data) => dispatch(transactionAdded(data)),
     categoryAdded: (data) => dispatch(categoryAdded(data))
   };
 };
 
-export default withLastcoinService()(connect(mapStateToProps, mapDispatchToProps)(TransactionsContainer));
+export default withLastCoinServices()(connect(mapStateToProps, mapDispatchToProps)(TransactionsContainer));

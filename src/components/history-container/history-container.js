@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
-import withLastcoinService from "../hoc/withLastcoinService";
+import withLastCoinServices from "../hoc/withLastCoinServices";
 import {connect} from "react-redux";
 import {fetchEventsAndCategories, transactionRemoved} from "../../actions";
 import Spinner from "../spinner";
-import HistoryTransactions from "../history-transactions";
+import HistoryTransactions from "./history-transactions";
 
 class HistoryContainer extends Component {
   state = {
@@ -47,11 +47,11 @@ const mapStateToProps = ({events, categories, loading}) => {
   return {events, categories, loading};
 };
 
-const mapDispatchToProps = (dispatch, {lastcoinService}) => {
+const mapDispatchToProps = (dispatch, {lastCoinServiceRequest}) => {
   return {
-    fetchEventsAndCategories: fetchEventsAndCategories(lastcoinService, dispatch),
+    fetchEventsAndCategories: fetchEventsAndCategories(lastCoinServiceRequest, dispatch),
     transactionRemoved: (data) => dispatch(transactionRemoved(data))
   };
 };
 
-export default withLastcoinService()(connect(mapStateToProps, mapDispatchToProps)(HistoryContainer));
+export default withLastCoinServices()(connect(mapStateToProps, mapDispatchToProps)(HistoryContainer));

@@ -1,6 +1,6 @@
-import LastcoinService from "../services/lastcoin-service";
+import LastCoinServices from "../services/last-coin-services";
 
-const lastcoinService = new LastcoinService();
+const lastCoinServiceRequest = new LastCoinServices();
 
 const initialState = {
   profile: [],
@@ -21,7 +21,8 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         profile: [],
-        loading: true
+        loading: true,
+        menuActivity: false
       };
 
     case 'FETCH_PROFILE_SUCCESS':
@@ -39,7 +40,8 @@ const reducer = (state = initialState, action) => {
         ...state,
         events: [],
         categories: [],
-        loading: true
+        loading: true,
+        menuActivity: false
       };
 
     case 'FETCH_EVENTS_AND_CATEGORIES_SUCCESS':
@@ -98,7 +100,7 @@ const extractEventsAndCategories = (state, data) => {
 };
 
 const deleteTransaction = (state, id) => {
-  lastcoinService.delTransaction(id);
+  lastCoinServiceRequest.delTransaction(id);
 
   return {
     ...state,
@@ -136,8 +138,8 @@ const addedTransaction = (state, data) => {
     };
   }
 
-  lastcoinService.postTransaction(newEvent);
-  lastcoinService.putUpdateProfile(state.profile.id, newProfile);
+  lastCoinServiceRequest.postTransaction(newEvent);
+  lastCoinServiceRequest.putUpdateProfile(state.profile.id, newProfile);
 
   return {
     ...state,
@@ -157,7 +159,7 @@ const addedCategory = (state, data) => {
     name: data.selectedCategoryName
   };
 
-  lastcoinService.postCategory(newCategory);
+  lastCoinServiceRequest.postCategory(newCategory);
   return {
     ...state,
     categories: [

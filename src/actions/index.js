@@ -58,45 +58,27 @@ const activationMenu = () => {
   };
 };
 
-const eventsLoaded = (categories) => {
-  return {
-    type: 'FETCH_EVENTS_SUCCESS',
-    payload: categories
-  }
-};
-
-const categoriesLoaded = (categories) => {
-  return {
-    type: 'FETCH_CATEGORIES_SUCCESS',
-    payload: categories
-  }
-};
-
-const fetchProfile = (lastcoinService, dispatch) => (id) => {
+const fetchProfile = (lastCoinServiceRequest, dispatch) => (id) => {
   dispatch(ProfileRequest());
-  lastcoinService.getProfile(id)
+  lastCoinServiceRequest.getProfile(id)
     .then((data) => dispatch(ProfileLoaded(data)))
     .catch((err) => console.log('fetchCashAccount', err))
 };
 
-const fetchEventsAndCategories = (lastcoinService, dispatch) => () => {
+const fetchEventsAndCategories = (lastCoinServiceRequest, dispatch) => () => {
   dispatch(eventsAndCategoriesRequest());
-  lastcoinService.getEventsAndCategories()
+  lastCoinServiceRequest.getEventsAndCategories()
     .then((data) => dispatch(eventsAndCategoriesLoaded(data)))
     .catch((err) => console.log('fetchEventsAndCategories', err))
 };
 
-const fetchExchangeRates = (lastcoinService, dispatch) => () => {
-  lastcoinService.getExchangeRates()
+const fetchExchangeRates = (lastCoinServiceRequest, dispatch) => () => {
+  lastCoinServiceRequest.getExchangeRates()
     .then((data) => dispatch(exchangeRatesLoaded(data)))
     .catch((err) => console.log('fetchExchangeRates', err))
 };
 
 export {
-  exchangeRatesLoaded,
-  eventsAndCategoriesLoaded,
-  eventsLoaded,
-  categoriesLoaded,
   transactionRemoved,
   transactionAdded,
   fetchEventsAndCategories,

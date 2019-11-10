@@ -72,6 +72,7 @@
       content: '';
       transform: translateY(-5px);
     }
+
     &_span:after {
       content: '';
       transform: translateY(5px);
@@ -82,6 +83,7 @@
       width: 10px;
       transform-origin: left top;
     }
+
     &_span-active:after {
       transform: rotate(35deg);
       width: 10px;

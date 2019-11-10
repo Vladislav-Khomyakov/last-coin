@@ -1,5 +1,5 @@
 import React from "react";
-import AccountContainer from "../account-container";
+import AccountContainer from "../components/account-container";
 
 const AccountPage = () => {
   return (

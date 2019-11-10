@@ -16,7 +16,7 @@ const TransactionInput = ({categories, state, handleChange, onAddedTransaction})
       <div className='transaction-input__category-section'>
         <span>Select a category:</span>
         <select name='selectedCategory' value={selectedCategory} onChange={handleChange}>
-          <option value='-1'> </option>
+          <option value='-1'></option>
           {categories.map(renderSelectItems)}
         </select>
       </div>

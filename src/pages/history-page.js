@@ -1,5 +1,5 @@
 import React from 'react';
-import HistoryContainer from "../history-container";
+import HistoryContainer from "../components/history-container";
 
 const HistoryPage = () => {
   return (

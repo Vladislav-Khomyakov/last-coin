@@ -48,19 +48,19 @@ const HistoryTransactions = ({events, categories, onDelete}) => {
         </h3>
         <table className='history-transactions__table'>
           <thead className='history-transactions__thead'>
-            <tr className='history-transactions__row'>
-              <th>#</th>
-              <th>Type</th>
-              <th>Category</th>
-              <th>Amount</th>
-              <th>Wallet type</th>
-              <th>Data</th>
-              <th>Description</th>
-              <th>Action</th>
-            </tr>
+          <tr className='history-transactions__row'>
+            <th>#</th>
+            <th>Type</th>
+            <th>Category</th>
+            <th>Amount</th>
+            <th>Wallet type</th>
+            <th>Data</th>
+            <th>Description</th>
+            <th>Action</th>
+          </tr>
           </thead>
           <tbody className='history-transactions__tbody'>
-            {events.map(renderRow)}
+          {events.map(renderRow)}
           </tbody>
         </table>
       </div>

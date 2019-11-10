@@ -1,9 +1,9 @@
 import React from 'react';
 import {Route, Switch, Redirect} from 'react-router-dom';
 import './App.scss';
-import withLastcoinService from '../hoc/withLastcoinService';
+import withLastCoinServices from '../hoc/withLastCoinServices';
 import Header from "../header";
-import {AccountPage, HistoryPage, TransactionsPage} from "../pages";
+import {AccountPage, HistoryPage, TransactionsPage} from "../../pages";
 import Navigation from "../navigation";
 
 const App = () => {
@@ -29,4 +29,4 @@ const App = () => {
   );
 };
 
-export default withLastcoinService()(App);
+export default withLastCoinServices()(App);
