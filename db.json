@@ -113,56 +113,6 @@
       "walletType": "card",
       "date": "28.10.2019",
       "description": "Description"
-    },
-    {
-      "id": 20,
-      "userId": 1,
-      "type": "income",
-      "category": 1,
-      "amount": 1,
-      "walletType": "card",
-      "date": "28.10.2019",
-      "description": ""
-    },
-    {
-      "id": 21,
-      "userId": 1,
-      "type": "income",
-      "category": 1,
-      "amount": 1,
-      "walletType": "card",
-      "date": "28.10.2019",
-      "description": "fsda"
-    },
-    {
-      "id": 22,
-      "userId": 1,
-      "type": "income",
-      "category": 1,
-      "amount": 1,
-      "walletType": "card",
-      "date": "28.10.2019",
-      "description": ""
-    },
-    {
-      "id": 23,
-      "userId": 1,
-      "type": "income",
-      "category": 1,
-      "amount": 1,
-      "walletType": "card",
-      "date": "28.10.2019",
-      "description": ""
-    },
-    {
-      "id": 24,
-      "userId": 1,
-      "type": "income",
-      "category": 1,
-      "amount": 1,
-      "walletType": "card",
-      "date": "28.10.2019",
-      "description": "2"
     }
   ]
 }
