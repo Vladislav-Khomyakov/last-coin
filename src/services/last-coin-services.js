@@ -10,14 +10,14 @@ export default class LastCoinServices {
     });
   };
 
-  // getResourcesEd =  () => {
-  //   return  fetch("http://edrud-backend.herokuapp.com/api/bill", {
-  //       method: 'GET'
-  //     })
-  //       .then((response) => response.json())
-  //       .then((body) => console.log(body))
-  //       .catch((e) => console.log("getResources error:", e));
-  // };
+  getResourcesEd =  () => {
+    return  fetch("https://edrud-backend.herokuapp.com/api/category", {
+        method: 'GET'
+      })
+        .then((response) => response.json())
+        .then((body) => console.log(body))
+        .catch((e) => console.log("getResources error:", e));
+  };
 
 //Profile
   getProfile = async (id) => {
@@ -126,6 +126,6 @@ export default class LastCoinServices {
   };
 }
 
-// const api = new LastCoinServices();
-//
-// api.getResourcesEd();
+const api = new LastCoinServices();
+
+api.getResourcesEd();
