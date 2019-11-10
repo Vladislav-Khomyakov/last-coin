@@ -22,7 +22,7 @@
   },
   "scripts": {
     "dev": "concurrently \"npm run start\" \"npm run server\"",
-    "start": "set PORT=3030 && env-cmd -f .env.developement react-scripts start",
+    "start": "env-cmd -f .env.developement react-scripts start",
     "server": "node server.js",
     "build": "env-cmd -f .env.production react-scripts build",
     "test": "env-cmd -f .env.developement react-scripts test",
