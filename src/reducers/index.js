@@ -100,19 +100,42 @@ const extractEventsAndCategories = (state, data) => {
 };
 
 const deleteTransaction = (state, id) => {
+  const deletedEvent = state.events.find(events => events.id === id);
+  const idx = state.events.indexOf(deletedEvent);
+
+  let newProfile;
+  if (deletedEvent.type === 'income') {
+    newProfile = {
+      ...state.profile,
+      rubCardCash: state.profile.rubCardCash - deletedEvent.amount
+    };
+  } else {
+    newProfile = {
+      ...state.profile,
+      rubCardCash: state.profile.rubCardCash + deletedEvent.amount
+    };
+  }
+
   lastCoinServiceRequest.delTransaction(id);
+  lastCoinServiceRequest.putUpdateProfile(state.profile.id, newProfile);
 
   return {
     ...state,
+    profile: newProfile,
     events: [
-      ...state.events.slice(0, id),
-      ...state.events.slice(id + 1)
+      ...state.events.slice(0, idx),
+      ...state.events.slice(idx + 1)
     ]
   };
 };
 
 const addedTransaction = (state, data) => {
   const maxId = Math.max(...state.events.map(event => event.id));
+  const date = new Date();
+  const year = date.getFullYear();
+  const month = date.getMonth();
+  const day = date.getDate();
+  const currentDate = String(`${day}.${month + 1}.${year}`);
 
   const newEvent = {
     id: maxId + 1,
@@ -121,7 +144,7 @@ const addedTransaction = (state, data) => {
     category: data.selectedCategory,
     amount: data.selectedAmount,
     walletType: "card",
-    date: "28.10.2019",
+    date: currentDate,
     description: data.selectedDescription
   };
 

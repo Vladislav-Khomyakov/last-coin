@@ -8,6 +8,7 @@
     "@fortawesome/free-solid-svg-icons": "^5.11.2",
     "@fortawesome/react-fontawesome": "^0.1.7",
     "env-cmd": "^10.0.1",
+    "json-server": "^0.15.1",
     "node-sass": "^4.12.0",
     "prop-types": "^15.7.2",
     "react": "^16.10.2",
@@ -20,9 +21,10 @@
     "redux-thunk": "^2.3.0"
   },
   "scripts": {
+    "heroku": "env-cmd -f .env.production react-scripts start && node server.js",
     "dev": "concurrently --kill-others \"npm run start\" \"npm run server\"",
-    "start": "set PORT=3030 && env-cmd -f .env.developement react-scripts start",
-    "server": "json-server --watch db.json --port 3033",
+    "start": "env-cmd -f .env.developement react-scripts start",
+    "server": "node server.js",
     "build": "env-cmd -f .env.production react-scripts build",
     "test": "env-cmd -f .env.developement react-scripts test",
     "eject": "react-scripts eject"
@@ -41,5 +43,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "concurrently": "^5.0.0"
   }
 }

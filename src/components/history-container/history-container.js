@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import withLastCoinServices from "../hoc/withLastCoinServices";
 import {connect} from "react-redux";
-import {fetchEventsAndCategories, transactionRemoved} from "../../actions";
+import {fetchEventsAndCategories, fetchProfile, transactionRemoved} from "../../actions";
 import Spinner from "../spinner";
 import HistoryTransactions from "./history-transactions";
 
@@ -11,19 +11,19 @@ class HistoryContainer extends Component {
   };
 
   componentDidMount() {
+    this.props.fetchProfile(1);
     this.props.fetchEventsAndCategories();
   };
 
   componentDidUpdate() {
     if (this.state.update === true) {
-      setTimeout(() => this.props.fetchEventsAndCategories(), 1);
+      setTimeout(() => this.props.fetchEventsAndCategories(), 2000);
       this.setState({update: false});
     }
   };
 
   onDelete = (eventsId) => {
-    const {transactionRemoved} = this.props;
-    transactionRemoved(eventsId);
+    this.props.transactionRemoved(eventsId);
     this.setState({update: true});
   };
 
@@ -50,6 +50,7 @@ const mapStateToProps = ({events, categories, loading}) => {
 const mapDispatchToProps = (dispatch, {lastCoinServiceRequest}) => {
   return {
     fetchEventsAndCategories: fetchEventsAndCategories(lastCoinServiceRequest, dispatch),
+    fetchProfile: fetchProfile(lastCoinServiceRequest, dispatch),
     transactionRemoved: (data) => dispatch(transactionRemoved(data))
   };
 };
