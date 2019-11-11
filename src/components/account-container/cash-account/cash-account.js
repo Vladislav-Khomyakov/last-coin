@@ -3,8 +3,8 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faCreditCard, faRubleSign, faEuroSign, faDollarSign} from '@fortawesome/free-solid-svg-icons';
 import "./cash-account.scss";
 
-const CashAccount = ({profile}) => {
-  const {rubCardCash, eurCardCash, usdCardCash} = profile;
+const CashAccount = ({cardCash}) => {
+  const {rubCardCash, eurCardCash, usdCardCash} = cardCash;
   const moneyFormat = (value) => {
     return parseFloat(value).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, "$1 ").replace('.', ',');
   };

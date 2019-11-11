@@ -100,13 +100,31 @@ const extractEventsAndCategories = (state, data) => {
 };
 
 const deleteTransaction = (state, id) => {
+  const deletedEvent = state.events.find(events => events.id === id);
+  const idx = state.events.indexOf(deletedEvent);
+
+  let newProfile;
+  if (deletedEvent.type === 'income') {
+    newProfile = {
+      ...state.profile,
+      rubCardCash: state.profile.rubCardCash - deletedEvent.amount
+    };
+  } else {
+    newProfile = {
+      ...state.profile,
+      rubCardCash: state.profile.rubCardCash + deletedEvent.amount
+    };
+  }
+
   lastCoinServiceRequest.delTransaction(id);
+  lastCoinServiceRequest.putUpdateProfile(state.profile.id, newProfile);
 
   return {
     ...state,
+    profile: newProfile,
     events: [
-      ...state.events.slice(0, id),
-      ...state.events.slice(id + 1)
+      ...state.events.slice(0, idx),
+      ...state.events.slice(idx + 1)
     ]
   };
 };

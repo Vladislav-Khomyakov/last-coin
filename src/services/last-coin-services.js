@@ -10,15 +10,6 @@ export default class LastCoinServices {
     });
   };
 
-  getResourcesEd =  () => {
-    return  fetch("https://edrud-backend.herokuapp.com/api/category", {
-        method: 'GET'
-      })
-        .then((response) => response.json())
-        .then((body) => console.log(body))
-        .catch((e) => console.log("getResources error:", e));
-  };
-
 //Profile
   getProfile = async (id) => {
     const res = await this.getResources(`/profile/${id}`);
@@ -125,7 +116,3 @@ export default class LastCoinServices {
     return xml.getElementsByTagName('Cube')[i].attributes[1].value;
   };
 }
-
-const api = new LastCoinServices();
-
-api.getResourcesEd();

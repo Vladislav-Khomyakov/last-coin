@@ -21,7 +21,8 @@
     "redux-thunk": "^2.3.0"
   },
   "scripts": {
-    "dev": "env-cmd -f .env.developement react-scripts start && node server.js",
+    "heroku": "env-cmd -f .env.production react-scripts start && node server.js",
+    "dev": "concurrently --kill-others \"npm run start\" \"npm run server\"",
     "start": "env-cmd -f .env.developement react-scripts start",
     "server": "node server.js",
     "build": "env-cmd -f .env.production react-scripts build",

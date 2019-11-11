@@ -16,6 +16,11 @@ class AccountContainer extends Component {
 
   render() {
     const {profile, exchangeRates, loading} = this.props;
+    const cardCash = {
+      rubCardCash: profile.rubCardCash,
+      eurCardCash: profile.rubCardCash / exchangeRates.eurER,
+      usdCardCash: profile.rubCardCash / exchangeRates.usdER
+    };
 
     if (loading) {
       return <Spinner/>
@@ -27,7 +32,7 @@ class AccountContainer extends Component {
           profile={profile}/>
         <div className="account-container">
           <CashAccount
-            profile={profile}/>
+            cardCash={cardCash}/>
           <ExchangeRates
             exchangeRates={exchangeRates}/>
         </div>

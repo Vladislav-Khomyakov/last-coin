@@ -48,8 +48,8 @@ const TransactionInput = ({categories, state, handleChange, onAddedTransaction})
           <span className='transaction-input__title'>Enter amount</span>
           <input
             type="number"
-            min="1"
             name='selectedAmount'
+            min="0"
             value={selectedAmount}
             onChange={handleChange}/>
         </div>
@@ -58,6 +58,7 @@ const TransactionInput = ({categories, state, handleChange, onAddedTransaction})
           <input
             type="text"
             name='selectedDescription'
+            placeholder="Enter description"
             value={selectedDescription}
             onChange={handleChange}/>
         </div>
