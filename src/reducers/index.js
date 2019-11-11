@@ -131,6 +131,11 @@ const deleteTransaction = (state, id) => {
 
 const addedTransaction = (state, data) => {
   const maxId = Math.max(...state.events.map(event => event.id));
+  const date = new Date();
+  const year = date.getFullYear();
+  const month = date.getMonth();
+  const day = date.getDate();
+  const currentDate = String(`${day}.${month + 1}.${year}`);
 
   const newEvent = {
     id: maxId + 1,
@@ -139,7 +144,7 @@ const addedTransaction = (state, data) => {
     category: data.selectedCategory,
     amount: data.selectedAmount,
     walletType: "card",
-    date: "28.10.2019",
+    date: currentDate,
     description: data.selectedDescription
   };
 
