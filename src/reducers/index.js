@@ -84,8 +84,8 @@ const extractExchangeRate = (state, data) => {
     ...state,
     exchangeRates: {
       dataER: 'test',
-      eurER: data.eurER,
-      usdER: data.usdER
+      eurER: parseFloat(data.cEUR.replace(',','.').replace(' ','')),
+      usdER: parseFloat(data.cUSD.replace(',','.').replace(' ',''))
     }
   };
 };

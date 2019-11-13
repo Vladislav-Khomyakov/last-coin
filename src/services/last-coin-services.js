@@ -1,4 +1,4 @@
-import {_ApiBase, _globalApiCbrEUR, _proxyCors} from './constants';
+import {_ApiBase, _proxyCors, _globalApiCbrRF} from './constants';
 
 export default class LastCoinServices {
   getResources = async (url) => {
@@ -84,14 +84,6 @@ export default class LastCoinServices {
   };
 
 //Get exchange rates
-  getExchangeRates = async () => {
-    const currency = await this.getCurrencyEUR();
-    return {
-      eurER: currency.cEUR,
-      usdER: currency.cEUR / currency.cUSD
-    }
-  };
-
   /*getCurrencyUSD = async () => {
     return await new Promise((resolve) => {
       fetch(_globalApiApilayerCurrencyUSD)
@@ -101,24 +93,24 @@ export default class LastCoinServices {
     });
   };*/
 
-  getCurrencyEUR = async () => {
-    const xml = await fetch(_proxyCors + _globalApiCbrEUR)
+  getExchangeRates = async () => {
+    const xml = await fetch(_proxyCors + _globalApiCbrRF)
       .then((response) => response.text())
       .then((body) => new DOMParser().parseFromString(body, "text/xml"))
       .catch((e) => console.log("getExchangeRates error:", e));
     let cEUR;
     let cUSD;
     for (let i = 0; i < 30; i++) {
-      const rate = xml.getElementsByTagName('Cube')[i].attributes[0].value;
-      if (rate === 'RUB') {
-        cEUR = xml.getElementsByTagName('Cube')[i].attributes[1].value;
+      const rate = xml.getElementsByTagName('CharCode')[i].textContent;
+      if (rate === 'EUR') {
+        cEUR = xml.getElementsByTagName('Value')[i].textContent;
       } else if (rate === 'USD') {
-        cUSD = xml.getElementsByTagName('Cube')[i].attributes[1].value;
+        cUSD = xml.getElementsByTagName('Value')[i].textContent;
       }
     }
     return {
       cEUR: cEUR,
       cUSD: cUSD
-    }
+    };
   };
 }
