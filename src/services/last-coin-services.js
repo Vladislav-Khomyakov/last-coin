@@ -1,4 +1,4 @@
-import {_ApiBase, _globalApiApilayerCurrencyUSD, _globalApiCbrEUR, _proxyCors} from './constants';
+import {_ApiBase, _globalApiCbrEUR, _proxyCors} from './constants';
 
 export default class LastCoinServices {
   getResources = async (url) => {
