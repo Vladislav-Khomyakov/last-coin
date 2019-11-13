@@ -72,6 +72,12 @@ const fetchEventsAndCategories = (lastCoinServiceRequest, dispatch) => () => {
     .catch((err) => console.log('fetchEventsAndCategories', err))
 };
 
+const fetchEventsAndCategoriesUpdate = (lastCoinServiceRequest, dispatch) => () => {
+  lastCoinServiceRequest.getEventsAndCategories()
+    .then((data) => dispatch(eventsAndCategoriesLoaded(data)))
+    .catch((err) => console.log('fetchEventsAndCategories', err))
+};
+
 const fetchExchangeRates = (lastCoinServiceRequest, dispatch) => () => {
   lastCoinServiceRequest.getExchangeRates()
     .then((data) => dispatch(exchangeRatesLoaded(data)))
@@ -82,6 +88,7 @@ export {
   transactionRemoved,
   transactionAdded,
   fetchEventsAndCategories,
+  fetchEventsAndCategoriesUpdate,
   fetchProfile,
   fetchExchangeRates,
   categoryAdded,
