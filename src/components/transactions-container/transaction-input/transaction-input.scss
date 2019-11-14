@@ -3,16 +3,21 @@
 
 .transaction-input {
   @include clear;
-  @include border;
+  @include component-border;
+
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  height: 350px;
+  justify-content: space-between;
+  height: 400px;
   width: 350px;
   margin-right: 10px;
 
   &__wrapper {
     margin: 10px;
+  }
+
+  &__head-title {
+    @include component-title;
   }
 
   &__selection-section {
@@ -24,12 +29,17 @@
     font-weight: bold;
   }
 
+  &__selection-button {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  &__radio {
+    @include radio-button;
+  }
+
   &__add-transaction-button {
     @include button-reset;
-    @include border;
-    @include button-pseudo-class;
-    border-color: $second-color;
-    margin-top: 10px;
-    font-weight: bold;
+    @include button;
   }
 }

@@ -1,3 +1,10 @@
+@import "../../../scss/partials/mixins";
+@import "../../../scss/partials/params";
+
 .user-profile {
-  margin: 10px 0 0 20px;
+  margin: $margin-content;
+
+  &__title {
+    @include component-title;
+  }
 }

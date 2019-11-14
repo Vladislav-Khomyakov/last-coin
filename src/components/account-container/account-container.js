@@ -27,16 +27,16 @@ class AccountContainer extends Component {
     }
 
     return (
-      <>
+      <div className='account-container'>
         <UserProfile
           profile={profile}/>
-        <div className="account-container">
+        <div className="account-container__details">
           <CashAccount
             cardCash={cardCash}/>
           <ExchangeRates
             exchangeRates={exchangeRates}/>
         </div>
-      </>
+      </div>
     );
   };
 }

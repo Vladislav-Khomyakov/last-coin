@@ -3,5 +3,14 @@
 
 .transaction-container {
   display: flex;
+  flex-direction: column;
   margin: $margin-content;
+
+  &__title {
+    @include component-title;
+  }
+
+  &__details {
+    display: flex;
+  }
 }

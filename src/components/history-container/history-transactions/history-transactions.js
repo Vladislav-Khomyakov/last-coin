@@ -46,23 +46,25 @@ const HistoryTransactions = ({events, categories, onDelete}) => {
         <h3 className='history-transactions__t-title'>
           Events list
         </h3>
-        <table className='history-transactions__table'>
-          <thead className='history-transactions__thead'>
-          <tr className='history-transactions__row'>
-            <th>#</th>
-            <th>Type</th>
-            <th>Category</th>
-            <th>Amount</th>
-            <th>Wallet type</th>
-            <th>Data</th>
-            <th>Description</th>
-            <th>Action</th>
-          </tr>
-          </thead>
-          <tbody className='history-transactions__tbody'>
-          {events.map(renderRow)}
-          </tbody>
-        </table>
+        <div className="history-transactions__table-container">
+          <table className='history-transactions__table'>
+            <thead className='history-transactions__thead'>
+            <tr className='history-transactions__row'>
+              <th className='history-transactions__cell'>#</th>
+              <th className='history-transactions__cell'>Type</th>
+              <th className='history-transactions__cell'>Category</th>
+              <th className='history-transactions__cell'>Amount</th>
+              <th className='history-transactions__cell'>Wallet type</th>
+              <th className='history-transactions__cell'>Data</th>
+              <th className='history-transactions__cell'>Description</th>
+              <th className='history-transactions__cell'>Action</th>
+            </tr>
+            </thead>
+            <tbody className='history-transactions__tbody'>
+            {events.map(renderRow)}
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   );

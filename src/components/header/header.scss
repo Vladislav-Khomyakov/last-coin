@@ -4,8 +4,13 @@
 .header {
   display: flex;
   background: $bg-header;
+  position: fixed;
+  top: 0;
+  align-items: center;
   margin: 0;
   padding: 0;
+  height: 80px;
+  width: 100%;
 
   &__title {
     padding-left: 85px;

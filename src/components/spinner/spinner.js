@@ -1,9 +1,10 @@
 import React from 'react';
-import {ReactComponent as SpinnerSVG} from "./Flickr-1.4s-100px.svg";
+import {ReactComponent as SpinnerSVG} from "./coin-spinner.svg";
+import './spinner.scss'
 
 const Spinner = () => {
   return (
-    <div>
+    <div className='spinner'>
       <SpinnerSVG/>
     </div>
   )

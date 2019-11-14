@@ -1,6 +1,6 @@
 import React from 'react';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faEuroSign, faDollarSign, faMoneyBillWaveAlt} from '@fortawesome/free-solid-svg-icons';
+import {faEuroSign, faDollarSign} from '@fortawesome/free-solid-svg-icons';
 
 const ExchangeRates = ({exchangeRates}) => {
   const {eurER, usdER} = exchangeRates;
@@ -10,14 +10,9 @@ const ExchangeRates = ({exchangeRates}) => {
 
   return (
     <div className='cash-account'>
-      <div className='cash-account__title'>
-        <div className='cash-account__icon cash-account__icon_card'>
-          <FontAwesomeIcon icon={faMoneyBillWaveAlt} size="2x"/>
-        </div>
-        <p className='cash-account__label'>
-          Exchange rates
-        </p>
-      </div>
+      <h3 className='cash-account__title'>
+        Exchange rates
+      </h3>
       <div>
         <ul className='cash-account__list'>
           <li className='cash-account__item'>

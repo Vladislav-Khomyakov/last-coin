@@ -1,6 +1,6 @@
 import React from 'react';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faCreditCard, faRubleSign, faEuroSign, faDollarSign} from '@fortawesome/free-solid-svg-icons';
+import {faRubleSign, faEuroSign, faDollarSign} from '@fortawesome/free-solid-svg-icons';
 import "./cash-account.scss";
 
 const CashAccount = ({cardCash}) => {
@@ -11,14 +11,9 @@ const CashAccount = ({cardCash}) => {
 
   return (
     <div className='cash-account'>
-      <div className='cash-account__title'>
-        <div className='cash-account__icon cash-account__icon_card'>
-          <FontAwesomeIcon icon={faCreditCard} size="2x"/>
-        </div>
-        <p className='cash-account__label'>
-          Card
-        </p>
-      </div>
+      <h3 className='cash-account__title'>
+        Card
+      </h3>
       <div>
         <ul className='cash-account__list'>
           <li className='cash-account__item'>

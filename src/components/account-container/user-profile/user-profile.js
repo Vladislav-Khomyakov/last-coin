@@ -6,7 +6,7 @@ const UserProfile = ({profile}) => {
 
   return (
     <div className="user-profile">
-      <h2>Hello {firstName}</h2>
+      <h2 className='user-profile__title'>Hello {firstName}</h2>
     </div>
   )
 };

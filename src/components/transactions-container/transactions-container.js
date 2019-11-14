@@ -111,16 +111,21 @@ class TransactionsContainer extends Component {
 
     return (
       <div className='transaction-container'>
-        <TransactionInput
-          categories={categories}
-          state={this.state.transactionInput}
-          handleChange={this.handleChange}
-          onAddedTransaction={this.onAddedTransaction}/>
+        <h2 className='transaction-container__title'>
+          Adding a new transaction and category
+        </h2>
+        <div className='transaction-container__details'>
+          <TransactionInput
+            categories={categories}
+            state={this.state.transactionInput}
+            handleChange={this.handleChange}
+            onAddedTransaction={this.onAddedTransaction}/>
 
-        <CategoryInput
-          state={this.state.categoryInput}
-          handleChange={this.handleChange}
-          onAddedCategory={this.onAddedCategory}/>
+          <CategoryInput
+            state={this.state.categoryInput}
+            handleChange={this.handleChange}
+            onAddedCategory={this.onAddedCategory}/>
+        </div>
       </div>
     );
   };

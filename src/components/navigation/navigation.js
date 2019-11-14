@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faUserCircle, faReceipt, faChartBar, faUserAstronaut} from "@fortawesome/free-solid-svg-icons";
+import {faUserCircle, faReceipt, faChartBar} from "@fortawesome/free-solid-svg-icons";
 import './navigation.scss'
 import {activationMenu} from "../../actions";
 
@@ -33,25 +33,27 @@ class Navigation extends Component {
           </button>
         </div>
         <div className="nav__menu">
-          <div className='nav__avatar'>
-            <FontAwesomeIcon icon={faUserAstronaut} size="7x" className='nav__avatar_icon'/>
-          </div>
           <ul className='nav__list'>
             <li className='nav__item'>
-              <span className='nav__space'> </span>
-              <FontAwesomeIcon icon={faUserCircle} className='nav__icon'/>
+              <div className="nav__icon-container">
+                <FontAwesomeIcon icon={faUserCircle} className='nav__icon'/>
+              </div>
               <Link to='/account' className='nav__link'>
                 Account
               </Link>
             </li>
             <li className='nav__item'>
-              <FontAwesomeIcon icon={faReceipt} className='nav__icon'/>
+              <div className="nav__icon-container">
+                <FontAwesomeIcon icon={faReceipt} className='nav__icon'/>
+              </div>
               <Link to='/transactions' className='nav__link'>
                 Transactions
               </Link>
             </li>
             <li className='nav__item'>
-              <FontAwesomeIcon icon={faChartBar} className='nav__icon'/>
+              <div className="nav__icon-container">
+                <FontAwesomeIcon icon={faChartBar} className='nav__icon'/>
+              </div>
               <Link to='/history' className='nav__link'>
                 History
               </Link>

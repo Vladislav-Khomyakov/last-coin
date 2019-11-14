@@ -14,16 +14,18 @@ const App = () => {
       </div>
       <div className='app__content-wrapper'>
         <Header/>
-        <Switch>
-          <Route exact path='/'>
-            <Redirect to='/account/'/>
-          </Route>
-          <Route path='/account/' component={AccountPage}/>
-          <Route path='/transactions/' component={TransactionsPage}/>
-          <Route path='/history/' component={HistoryPage}/>
+        <div className="app__content-container">
+          <Switch>
+            <Route exact path='/'>
+              <Redirect to='/account/'/>
+            </Route>
+            <Route path='/account/' component={AccountPage}/>
+            <Route path='/transactions/' component={TransactionsPage}/>
+            <Route path='/history/' component={HistoryPage}/>
 
-          <Route render={() => <h2>Page not found</h2>}/>
-        </Switch>
+            <Route render={() => <h2>Page not found</h2>}/>
+          </Switch>
+        </div>
       </div>
     </div>
   );

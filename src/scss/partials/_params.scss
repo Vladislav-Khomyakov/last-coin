@@ -1,15 +1,24 @@
 //Colors
 $white: #ffffff;
-$darkslategray: #424453;
-$cornflowerblue: #6c7ffa;
+$whitesmoke: #f8f8f8;
+$gainsboro: #e0e0e0;
+$black: #000000;
+$grey: #808080;
+$darkslategrey: #424453;
+$gold: #ffcc00;
 
 //Colors-element
-$bg: $white;
-$bg-header: $darkslategray;
-$second-color: $cornflowerblue;
+$bg: $whitesmoke;
+$bg-component: $white;
+$bg-header: $black;
+$second-color: $gold;
 $darken-second-color: darken($second-color, 5%);
-$font: #6E7386;
+$font: $black;
 $font-header: $white;
+$radioBorder: $darkslategrey;
+$radioActive: $gold;
 
 // Sized
-$margin-content: 10px 0 0 20px;
+$margin-content: 0 0 0 20px;
+$radioSize: 17px;
+

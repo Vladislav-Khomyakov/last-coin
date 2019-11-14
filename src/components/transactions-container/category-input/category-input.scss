@@ -3,16 +3,20 @@
 
 .category-input {
   @include clear;
-  @include border;
+  @include component-border;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   margin-left: 10px;
-  height: 150px;
+  height: 200px;
   width: 350px;
 
   &__wrapper {
-    margin: 10px;
+    margin: 10px 10px;
+  }
+
+  &__head-title {
+    @include component-title;
   }
 
   &__selection-section {
@@ -24,12 +28,13 @@
     font-weight: bold;
   }
 
+  &__selection-button {
+    display: flex;
+    justify-content: flex-end;
+  }
+
   &__add-category-button {
     @include button-reset;
-    @include border;
-    @include button-pseudo-class;
-    border-color: $second-color;
-    margin-top: 10px;
-    font-weight: bold;
+    @include button;
   }
 }

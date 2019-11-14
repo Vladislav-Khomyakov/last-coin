@@ -2,40 +2,20 @@
 @import "../../../scss/partials/mixins";
 
 .cash-account {
+  @include component-border;
+
   display: flex;
   flex-direction: column;
   height: 180px;
   width: 300px;
   margin: $margin-content;
   padding: 20px;
-  @include border;
 
   &__title {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 20px;
-  }
+    @include component-title;
 
-  &__label {
-    margin: 0 0 0 10px;
-    padding: 0;
-    font-size: 30px;
-    font-weight: bold;
-  }
-
-  &__icon {
-    border-radius: 6px;
-    height: 35px;
-    width: 35px;
-    padding: 10px;
-    color: #ffffff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    &_card {
-      background: radial-gradient(#9599f3, #6f71dc);
-    }
+    margin: 0 0 20px 0;
+    width: 100%;
   }
 
   &__list {
@@ -52,7 +32,7 @@
     display: flex;
     width: 100%;
     height: 2px;
-    background-color: grey;
+    background-color: $gainsboro;
   }
 
   &__currency-icon {

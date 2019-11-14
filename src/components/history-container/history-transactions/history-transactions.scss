@@ -8,12 +8,11 @@
   padding: 0;
 
   &__title {
-    width: 98%;
-    border-bottom: 2px solid lightgrey;
+    @include component-title;
   }
 
   &__table-wrapper {
-    @include border;
+    @include component-border;
     max-width: 96.5%;
     padding: 10px;
   }
@@ -21,6 +20,11 @@
   &__t-title {
     padding: 0;
     margin: 0 0 10px 10px;
+  }
+
+  &__table-container {
+    max-width: 100%;
+    overflow-x: auto;
   }
 
   &__table {
@@ -42,17 +46,20 @@
     border-top: 1px solid lightgrey;
 
     &_white {
-      background-color: $bg;
+      background-color: $white;
     }
 
     &_grey {
-      background-color: darken($bg, 15%);
+      background-color: $whitesmoke;
     }
   }
 
+  &__cell {
+    white-space: nowrap;
+  }
 
   &__del-button {
     @include button-reset;
-    @include button-pseudo-class;
+    @include solid-button;
   }
 }

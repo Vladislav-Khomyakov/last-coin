@@ -18,17 +18,119 @@
   }
 }
 
-@mixin button-pseudo-class {
+@mixin button {
+  background-color: $second-color;
+  color: $black;
+  padding: 6px;
+  width: 50%;
+  border-radius: 5px;
+  margin-top: 10px;
+  font-weight: bold;
+  transition: 0.5s;
+
   &:hover {
-    color: $second-color;
+    background-color: darken($second-color, 5%);
   }
 
   &:active {
-    color: $darken-second-color;
+    transform: scale(0.95);
+  }
+}
+
+@mixin solid-button {
+  border: 2px solid $second-color;
+  background-color: $white;
+  color: $second-color;
+  padding: 2px;
+  width: 40px;
+  border-radius: 5px;
+  margin: 5px 0;
+  transition: 0.5s;
+
+  &:hover {
+    background-color: $second-color;
+    color: $white;
+  }
+}
+
+@mixin radio-button {
+  margin: 16px 0;
+  display: block;
+  cursor: pointer;
+  input {
+    display: none;
+    & + span {
+      line-height: $radioSize;
+      height: $radioSize;
+      padding-left: $radioSize;
+      display: block;
+      position: relative;
+      &:not(:empty) {
+        padding-left: $radioSize + 8;
+      }
+      &:before,
+      &:after {
+        content: '';
+        width: $radioSize;
+        height: $radioSize;
+        display: block;
+        border-radius: 50%;
+        left: 0;
+        top: 0;
+        position: absolute;
+      }
+      &:before {
+        background: $radioBorder;
+        transition: background .2s ease, transform .4s cubic-bezier(.175, .885, .32, 2);
+      }
+      &:after {
+        background: #fff;
+        transform: scale(.78);
+        transition: transform .6s cubic-bezier(.175, .885, .32, 1.4);
+      }
+    }
+    &:checked + span {
+      &:before {
+        transform: scale(1.04);
+        background: $radioActive;
+      }
+      &:after {
+        transform: scale(.4);
+        transition: transform .3s ease;
+      }
+    }
+  }
+  &:hover {
+    input {
+      & + span {
+        &:before {
+          transform: scale(.92);
+        }
+        &:after {
+          transform: scale(.74);
+        }
+      }
+      &:checked + span {
+        &:after {
+          transform: scale(.4);
+        }
+      }
+    }
   }
 }
 
 @mixin border {
   border: 2px solid grey;
   border-radius: 6px;
+}
+
+@mixin component-border {
+  border-radius: 6px;
+  background-color: $bg-component;
+  box-shadow: 0 0 5px 2px rgba(221, 221, 221, 1);
+}
+
+@mixin component-title {
+  width: 98%;
+  border-bottom: 2px solid $gainsboro;
 }
