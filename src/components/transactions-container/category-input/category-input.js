@@ -8,7 +8,7 @@ const CategoryInput = ({state, handleChange, onAddedCategory}) => {
     <div className='category-input'>
       <div className="category-input__wrapper">
         <h3 className='category-input__head-title'>
-          Adding a new transaction and category
+          Category
         </h3>
         <div className="category-input__selection-section">
           <span className='transaction-input__title'>Enter a name</span>

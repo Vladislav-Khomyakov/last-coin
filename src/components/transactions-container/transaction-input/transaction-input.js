@@ -15,7 +15,7 @@ const TransactionInput = ({categories, state, handleChange, onAddedTransaction})
     <div className='transaction-input'>
       <div className='transaction-input__wrapper'>
         <h3 className='transaction-input__head-title'>
-          Adding a new transaction and category
+          Event
         </h3>
         <form>
           <div className='transaction-input__selection-section'>

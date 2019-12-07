@@ -28,7 +28,7 @@ export default class LastCoinServices {
       .catch((e) => console.log("putUpdateProfile error:", e));
   };
 
-//Get events and categories transaction-input
+//Get events and categories
   getEventsAndCategories = async () => {
     const events = await this.getPersonEvents();
     const categories = await this.getCategories();
@@ -84,14 +84,6 @@ export default class LastCoinServices {
   };
 
 //Get exchange rates
-  /*getCurrencyUSD = async () => {
-    return await new Promise((resolve) => {
-      fetch(_globalApiApilayerCurrencyUSD)
-        .then((response) => response.json())
-        .then((body) => resolve(body.quotes.USDRUB))
-        .catch((e) => console.log("getResources error:", e));
-    });
-  };*/
 
   getExchangeRates = async () => {
     const xml = await fetch(_proxyCors + _globalApiCbrRF)
